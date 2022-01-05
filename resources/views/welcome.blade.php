@@ -21,6 +21,11 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
+    <style>
+        .navbar-nav{
+            margin-left: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,7 +40,7 @@
 
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav ml-auto" style="text-align:right;">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Beranda</a>
                     </li>
