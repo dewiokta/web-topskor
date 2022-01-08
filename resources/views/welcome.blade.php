@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="images/logo_title.png">
     <title>Liga Topskor Indonesia</title>
 
 
@@ -31,8 +31,8 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container" style="margin-top: 15px;">
-            <a class="navbar-brand" href="#">
-                <img src="{{ url('images/logo.png') }}" height="92" width="253">
+            <a class="navbar-brand" href="/">
+                <img src="{{ url('images/logo.png') }}" height="72" width="253">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -42,16 +42,13 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Beranda</a>
+                        <a href="/">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tentang Kami</a>
+                        <a  href="/about">Tentang Kami</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Informasi Umum</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Masuk</a>
+                        <a  href="#">Informasi Umum</a>
                     </li>
                 </ul>
             </div>
