@@ -54,7 +54,7 @@
                         <a href="/">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a  href="#">Tentang Kami</a>
+                        <a  href="/about">Tentang Kami</a>
                     </li>
                     <li class="nav-item">
                         <a  href="#">Informasi Umum</a>
@@ -93,6 +93,8 @@
     </footer>
     <script src="js/jquery-.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.js"></script>
     <script src="js/anim.js"></script>
     <script>
         //----HOVER CAPTION---//	  
