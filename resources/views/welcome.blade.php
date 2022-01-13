@@ -48,7 +48,7 @@
                         <a  href="/about">Tentang Kami</a>
                     </li>
                     <li class="nav-item">
-                        <a  href="#">Informasi Umum</a>
+                        <a  href="/informasi">Informasi Umum</a>
                     </li>
                 </ul>
             </div>
