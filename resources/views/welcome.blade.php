@@ -68,7 +68,7 @@
                             Liga TopSkor sudah menjadi kawah candradimuka bagi para pesepak bola muda <br>
                             di Indonesia untuk meningkatkan kemampuan mereka dalam mengolah si kulit bundar. <br>
                         </h5><br>
-                        <a href="#">
+                        <a href="{{ route('login') }}">
                             <button class="login100-form-btn">Daftar</button>
                         </a>
                     </div>
