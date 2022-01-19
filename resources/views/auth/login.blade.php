@@ -28,10 +28,8 @@
     <style>
         .tombol {
             font-size: 16px;
-
             color: gray;
             line-height: 1.2;
-
             display: -webkit-box;
             display: -webkit-flex;
             display: -moz-box;
@@ -43,7 +41,6 @@
             min-width: 120px;
             height: 50px;
             border-radius: 30px;
-
             background: #F2F2F2;
             background: -webkit-linear-gradient(top, #0A2941, black);
             background: -o-linear-gradient(top, #0A2941, black);
@@ -51,13 +48,11 @@
             background: linear-gradient(top, #0A2941, black);
             position: relative;
             z-index: 1;
-
             -webkit-transition: all 0.4s;
             -o-transition: all 0.4s;
             -moz-transition: all 0.4s;
             transition: all 0.4s;
         }
-
         .tombol::before {
             content: "";
             display: block;
@@ -70,17 +65,14 @@
             top: 0;
             left: 0;
             opacity: 1;
-
             -webkit-transition: all 0.4s;
             -o-transition: all 0.4s;
             -moz-transition: all 0.4s;
             transition: all 0.4s;
         }
-
         .tombol:hover {
             color: #fff;
         }
-
         .tombol:hover:before {
             opacity: 0;
         }
