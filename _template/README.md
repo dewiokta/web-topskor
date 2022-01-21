@@ -1,212 +1,167 @@
-# [Argon Dashboard](https://www.creative-tim.com/product/argon-dashboard) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)]()
-
-
- ![version](https://img.shields.io/badge/version-1.2.0-blue.svg)  ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/argon-dashboard/issues.svg?maxAge=2592000)](https://github.com/creativetimofficial/argon-dashboard/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/argon-dashboard/issues.svg?maxAge=2592000)](https://github.com/creativetimofficial/argon-dashboard/issues?q=is%3Aissue+is%3Aclosed) [![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)](https://gitter.im/creative-tim-general/Lobby) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
-
-![Product Gif](https://s3.amazonaws.com/creativetim_bucket/products/96/original/opt_ad_thumbnail.jpg)
-
-
-Start your development with a Dashboard for Bootstrap 4. It is open source, free and it features many components that can help you create amazing websites.
-
-
-#### Fully Coded Components
-
-Argon Dashboard is built with over 100 individual components, giving you the freedom of choosing and combining. All components can take variations in colour, that you can easily modify using SASS files.
-
-You will save a lot of time going from prototyping to full-functional code, because all elements are implemented. This Dashboard is coming with prebuilt examples, so the development process is seamless, switching from our pages to the real website is very easy to be done.
-
-Every element has multiple states for colors, styles, hover, focus, that you can easily access and use.
-
-#### Complex Documentation
-
-Each element is well presented in a very complex documentation. You can read more about the idea behind this dashboard here. You can check the components here and the foundation here.
-
-#### Example Pages
-
-If you want to get inspiration or just show something directly to your clients, you can jump start your development with our pre-built example pages. You will be able to quickly set up the basic structure for your web project.
-
-## Table of Contents
-
-* [Demo](#demo)
-* [Quick Start](#quick-start)
-* [Documentation](#documentation)
-* [File Structure](#file-structure)
-* [Browser Support](#browser-support)
-* [Resources](#resources)
-* [Reporting Issues](#reporting-issues)
-* [Technical Support or Questions](#technical-support-or-questions)
-* [Licensing](#licensing)
-* [Useful Links](#useful-links)
-
-
-
-## Versions
-
-
-
-[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/html-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/argon-dashboard)
-[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/react-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/argon-dashboard-react)
-[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/vue-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/vue-argon-dashboard)
-[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/angular-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/argon-dashboard-angular)
-[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/aspnet-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/argon-dashboard-asp-net)
-[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/nodejs-logo.jpg" width="60" height="60" />](https://www.creative-tim.com/product/argon-dashboard-nodejs)
-[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/laravel_logo.png" width="60" height="60" />](https://www.creative-tim.com/product/argon-dashboard-laravel)
-
-
-
-| HTML | React | Vue | Angular |
-| --- | --- | --- | --- |
-| [![Argon Dashboard HTML](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard/argon-dashboard.jpg)](https://www.creative-tim.com/product/argon-dashboard) | [![Argon Dashboard React](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-react/argon-dashboard-react.jpg)](https://www.creative-tim.com/product/argon-dashboard-react) | [![Vue Argon Dashboard ](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-argon-dashboard/vue-argon-dashboard.jpg)](https://www.creative-tim.com/product/vue-argon-dashboard) | [![Argon Dashboard Angular](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-angular/argon-dashboard-angular.jpg)](https://www.creative-tim.com/product/argon-dashboard-angular)
-
-| Asp.net | Node.js | Laravel |
-| --- | --- | --- |
-| [![Argon Dashboard Asp.net](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-aspnet/argon-dashboard-aspnet.jpg)](https://www.creative-tim.com/product/argon-dashboard-asp-net) | [![Argon Dashboard Node.js](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-nodejs/argon-dashboard-nodejs.jpg)](https://www.creative-tim.com/product/argon-dashboard-nodejs) | [![Argon Dashboard Laravel](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-laravel/argon-dashboard-laravel.jpg)](https://www.creative-tim.com/product/argon-dashboard-laravel) |
-
-
-
-
-
-
-## Demo
-
-
-
-- [Start page]()
-- [User profile page]()
-- [Tables page ]()
-- [Maps Page]()
-- [Register page]()
-- [Login page]()
-
-
-| Start page | User profile page | Tables page  |
-| --- | --- | ---  |
-| [![Start page](https://github.com/creativetimofficial/public-assets/blob/master/argon-dashboard/start-page.png?raw=true)](https://demos.creative-tim.com/argon-dashboard)  | [![User profile page](https://github.com/creativetimofficial/public-assets/blob/master/argon-dashboard/profile-page.png?raw=true)](https://demos.creative-tim.com/argon-dashboard/examples/profile.html)  | [![Tables pages](https://github.com/creativetimofficial/public-assets/blob/master/argon-dashboard/tables-page.png?raw=true)](https://demos.creative-tim.com/argon-dashboard/examples/tables.html)
-
-| Maps page | Register page | Login page  |
-| --- | --- | ---  |
-| [![Maps page](https://github.com/creativetimofficial/public-assets/blob/master/argon-dashboard/maps-page.png?raw=true)](https://demos.creative-tim.com/argon-dashboard/examples/maps.html)  | [![Register page](https://github.com/creativetimofficial/public-assets/blob/master/argon-dashboard/register-page.png?raw=true)](https://demos.creative-tim.com/argon-dashboard/examples/register.html)  | [![Login page](https://github.com/creativetimofficial/public-assets/blob/master/argon-dashboard/login-page.png?raw=true)](https://demos.creative-tim.com/argon-dashboard/examples/login.html)
-
-
-
-
-
-## Download and Installation
-
-- [Download from Github](https://github.com/creativetimofficial/argon-dashboard/archive/master.zip)
-- [Download from Creative Tim](https://www.creative-tim.com/product/argon-dashboard)
-
-
-- Install with Npm: `npm i @creative-tim-official/argon-dashboard-free`
-
-- Install with Yarn: `yarn add @creative-tim-official/argon-dashboard-free`
-
-- Install with Composer: `composer create-project creativetimofficial/argon-dashboard-free`
-
-- Clone from Github: `git clone https://github.com/creativetimofficial/argon-dashboard.git`
-
-
-
-
-
-## Documentation
-
-The documentation for the Argon Dashboard is hosted at our [website](https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html).
-
-## File Structure
-
-Within the download you'll find the following directories and files:
-
-```
-argon/
-├── CHANGELOG.md
-├── LICENSE.md
-├── README.md
-├── assets/
-  ├── css/
-  │   ├── argon.css
-  │   ├── argon.css.map
-  │   ├── argon.min.css
-  │   ├── argon.min.css.map
-  └── pages/
-  │   ├── components/
-  │   ├── dashboards/
-  │   ├── examples/
-  │   ├── forms/
-  │   ├── maps/
-  │   ├── tables/
-  │   ├── calendar.html
-  │   ├── charts.html
-  │   ├── widgets.html
-  └── img/
-  │   ├── argon/
-  │   ├── brand/
-  │   ├── icons/
-  │   ├── ill/
-  └── js/
-  │   ├── argon.js
-  │   └── argon.min.js
-  └── scss/
-  │   ├── bootstrap/
-  │   ├── core/
-  │   ├── custom/
-  │   ├── argon.scss
-  └── vendor/
-      ├── bootstrap/
-      ├── jquery/
-      ├── ...
-
-```
-
-## Browser Support
-
-At present, we officially aim to support the last two versions of the following browsers:
-
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
-
-## Resources
-
-
-
-- Demo: <https://demos.creative-tim.com/argon-dashboard>
-- Documentation: <https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html>
-- License Agreement: <https://www.creative-tim.com/license>
-- Support: <https://www.creative-tim.com/contact-us>
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/argon-dashboard/issues)
-
-## Reporting Issues
-
-We use GitHub Issues as the official bug tracker for the Argon Dashboard. Here are some advices for our users that want to report an issue:
-
-1. Make sure that you are using the latest version of the Argon Dashboard. Check the CHANGELOG from your copy on our [website](https://www.creative-tim.com).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
-
-## Licensing
-
-
-- Copyright &copy; 2020 Creative Tim (https://www.creative-tim.com)
-- Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
-
-
-## Useful Links
-
-- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
-- [Affiliate Program](https://www.creative-tim.com/affiliates/new?ref=mk-github-readme) (earn money)
-- [Blog Creative Tim](http://blog.creative-tim.com/)
-- [Free Products](https://www.creative-tim.com/bootstrap-themes/free?ref=mk-github-readme) from Creative Tim
-- [Premium Products](https://www.creative-tim.com/bootstrap-themes/premium?ref=mk-github-readme) from Creative Tim
-- [React Products](https://www.creative-tim.com/bootstrap-themes/react-themes?ref=mk-github-readme) from Creative Tim
-- [Angular Products](https://www.creative-tim.com/bootstrap-themes/angular-themes?ref=mk-github-readme) from Creative Tim
-- [VueJS Products](https://www.creative-tim.com/bootstrap-themes/vuejs-themes?ref=mk-github-readme) from Creative Tim
-- [More products](https://www.creative-tim.com/bootstrap-themes?ref=mk-github-readme) from Creative Tim
-- Check our Bundles [here](https://www.creative-tim.com/bundles?ref=mk-github-readme)
-
-## Social Media
-
-- Twitter: <https://twitter.com/creativetim>
-- Facebook: <https://www.facebook.com/creativetim>
-- Dribbble: <https://dribbble.com/creativetim>
-- Google+: <https://plus.google.com/+creativetimpage>
-- Instagram: <https://www.instagram.com/creativetimofficial>
-
+<p align="center">
+  <a href="https://getstisla.com">
+    <img src="https://avatars2.githubusercontent.com/u/45754626?s=75&v=4" alt="Stisla logo" width="75" height="75">
+  </a>
+</p>
+
+<h1 align="center">Stisla</h1>
+
+<p>
+  Stisla is a Free Bootstrap Admin Template which will help you to speed up your project and design your own dashboard UI. Users will love it.
+</p>
+<br>
+<span align="center">
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-22-orange.svg?style=flat-square)](#contributors-)
+![GitHub last commit](https://img.shields.io/github/last-commit/stisla/stisla.svg)
+![GitHub repo size in bytes](https://img.shields.io/github/repo-size/badges/shields.svg)
+[![License](https://img.shields.io/github/license/stisla/stisla.svg)](LICENSE)
+![npm version](https://badge.fury.io/js/yarn.svg)
+
+</span>
+
+<br>
+
+<p align="center">
+  <a href="https://getstisla.com">Homepage</a>
+  •
+  <a href="https://getstisla.com/getting-started">Getting Started</a>
+  •
+  <a href="https://demo.getstisla.com" target="_new">Demo</a>
+  •
+  <a href="https://getstisla.com/docs">Documentation</a>
+  •
+  <a href="https://getstisla.com/blog">Blog</a>
+  •
+  <a href="https://getstisla.com/support">Issue</a>
+</p>
+
+<br>
+
+[![Stisla Preview](https://camo.githubusercontent.com/2135e0f6544a7286a3412cdc3df32d47fc91b045/68747470733a2f2f692e6962622e636f2f3674646d6358302f323031382d31312d31312d31352d33352d676574737469736c612d636f6d2e706e67)](https://getstisla.com)
+
+
+## Table of contents
+
+- [Status](#status)
+- [Quick start](#quick-start)
+- [Roadmap](#roadmap)
+- [Integrates](#integrates)
+- [Creator](#creator)
+- [Contributors](#contributors)
+- [Contributing](#contributing)
+- [Showcase](#showcase)
+- [License](#license)
+- [Supported By BrowserStack](#supported-by-browserstack)
+
+
+## Quick start
+
+Several quick start options are available:
+
+- Clone the repo: `git clone https://github.com/stisla/stisla.git`
+- Run `cd` to the newly created `/stisla` directory
+- Install [yarn](https://yarnpkg.com) first if you don't have it in your machine
+- Run the `yarn` command
+- Done
+
+Or if you're Indonesian, you can watch my video [here](https://www.youtube.com/watch?v=dvnqtOUvGFc)
+
+Read the [Getting started page](https://getstisla.com/docs) for information on the framework contents, templates and examples, and more.
+
+## Development Guide
+- Clone the repo: `git clone https://github.com/stisla/stisla.git` to your local path
+- Make sure you have [npm](https://www.npmjs.com) or [yarn](https://yarnpkg.com) installed to your machine
+- Run the `stisla-dev` command to install production dependencies
+- Run the `dev` command to start developing
+
+## Roadmap
+You can find the Stisla road map here: [Stisla Roadmap](https://trello.com/b/M8TMnehE/stisla-roadmap)
+
+
+## Integrates
+- [Rails](https://github.com/SunDi3yansyah/stisla-rails)
+- [CodeIgniter](https://github.com/KhidirDotID/stisla-codeigniter)
+- [Laravel](https://github.com/rehmatworks/stisla-laravel)
+- [Laravel UI Preset](https://github.com/poteto-dev/laravel-ui-stisla)
+- [Jekyll](https://github.com/SunDi3yansyah/stisla-jekyll)
+- [YII2](https://github.com/piantgrunger/yii2-stisla)
+- [Django](https://github.com/bimbims125/stisla-django.git)
+- 
+- and more...
+
+## Creator
+Stisla is created by [Nauval](http://nauv.al) ([Twitter](https://twitter.com/mhdnauvalazhar)). [Support](https://www.buymeacoffee.com/mhd) this guy!
+
+## Contributors
+Stisla is better because of the [contributors](https://github.com/stisla/stisla/graphs/contributors). Thank them too.
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/muhammaddicky"><img src="https://avatars0.githubusercontent.com/u/25713287?v=4" width="100px;" alt=""/><br /><sub><b>Muhammad Dicky</b></sub></a><br /><a href="#design-muhammaddicky" title="Design">🎨</a></td>
+    <td align="center"><a href="http://weibo.com/jkweiyi"><img src="https://avatars1.githubusercontent.com/u/16080182?v=4" width="100px;" alt=""/><br /><sub><b>Jokin</b></sub></a><br /><a href="#design-jokin1999" title="Design">🎨</a></td>
+    <td align="center"><a href="http://www.barndev.com"><img src="https://avatars2.githubusercontent.com/u/10700286?v=4" width="100px;" alt=""/><br /><sub><b>Muhammad Ihsan</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=muhammad-ihsan" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/dubnm"><img src="https://avatars3.githubusercontent.com/u/3620552?v=4" width="100px;" alt=""/><br /><sub><b>Trevor</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=dubnm" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ranzeplay"><img src="https://avatars3.githubusercontent.com/u/43675876?v=4" width="100px;" alt=""/><br /><sub><b>Play_D</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=ranzeplay" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://rizkyhidayat.id"><img src="https://avatars0.githubusercontent.com/u/25103643?v=4" width="100px;" alt=""/><br /><sub><b>rizkyyangpalsu</b></sub></a><br /><a href="#platform-rizkyyangpalsu" title="Packaging/porting to new platform">📦</a></td>
+    <td align="center"><a href="https://tackeyy.com/"><img src="https://avatars3.githubusercontent.com/u/8916877?v=4" width="100px;" alt=""/><br /><sub><b>Yusuke Takita</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=tackeyy" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/mariocalin"><img src="https://avatars0.githubusercontent.com/u/16624614?v=4" width="100px;" alt=""/><br /><sub><b>Mario</b></sub></a><br /><a href="#design-mariocalin" title="Design">🎨</a></td>
+    <td align="center"><a href="http://iqbalaqaba.github.io"><img src="https://avatars3.githubusercontent.com/u/20835372?v=4" width="100px;" alt=""/><br /><sub><b>Iqbal</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=iqbalaqaba" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/cesarlopes"><img src="https://avatars0.githubusercontent.com/u/1175019?v=4" width="100px;" alt=""/><br /><sub><b>César Lopes</b></sub></a><br /><a href="#design-cesarlopes" title="Design">🎨</a></td>
+    <td align="center"><a href="https://rehmat.works"><img src="https://avatars2.githubusercontent.com/u/23554187?v=4" width="100px;" alt=""/><br /><sub><b>Rehmat Alam</b></sub></a><br /><a href="#platform-rehmatworks" title="Packaging/porting to new platform">📦</a></td>
+    <td align="center"><a href="https://github.com/stefanturcanu"><img src="https://avatars0.githubusercontent.com/u/6572745?v=4" width="100px;" alt=""/><br /><sub><b>Stefan Turcanu</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=stefanturcanu" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mehmetmenengec"><img src="https://avatars2.githubusercontent.com/u/8948335?v=4" width="100px;" alt=""/><br /><sub><b>Mehmet MENENGEÇ</b></sub></a><br /><a href="#design-mehmetmenengec" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/lkloon123"><img src="https://avatars2.githubusercontent.com/u/21114981?v=4" width="100px;" alt=""/><br /><sub><b>NeoSon</b></sub></a><br /><a href="#design-lkloon123" title="Design">🎨</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/jenkijo"><img src="https://avatars1.githubusercontent.com/u/32048650?v=4" width="100px;" alt=""/><br /><sub><b>Phong Truong</b></sub></a><br /><a href="#design-jenkijo" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/frobinsonj"><img src="https://avatars3.githubusercontent.com/u/16726902?v=4" width="100px;" alt=""/><br /><sub><b>Freddy Robinson</b></sub></a><br /><a href="#design-frobinsonj" title="Design">🎨</a></td>
+    <td align="center"><a href="https://alfiannaufal.com"><img src="https://avatars1.githubusercontent.com/u/15101734?v=4" width="100px;" alt=""/><br /><sub><b>Alfian Naufal</b></sub></a><br /><a href="#platform-piantgrunger" title="Packaging/porting to new platform">📦</a></td>
+    <td align="center"><a href="http://achmiral.id"><img src="https://avatars0.githubusercontent.com/u/10906059?v=4" width="100px;" alt=""/><br /><sub><b>Miral Achmed</b></sub></a><br /><a href="#content-achmiral" title="Content">🖋</a></td>
+    <td align="center"><a href="http://david.polynar.hu"><img src="https://avatars1.githubusercontent.com/u/1795922?v=4" width="100px;" alt=""/><br /><sub><b>David Polynar</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=polynar" title="Code">💻</a></td>
+    <td align="center"><a href="http://tarhche.ir"><img src="https://avatars3.githubusercontent.com/u/6291970?v=4" width="100px;" alt=""/><br /><sub><b>mahdikhanzadi</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=khanzadimahdi" title="Code">💻</a></td>
+    <td align="center"><a href="https://medium.com/omarelgabrys-blog/"><img src="https://avatars3.githubusercontent.com/u/9262504?v=4" width="100px;" alt=""/><br /><sub><b>OMAR ELGABRY</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=OmarElGabry" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://sundi3yansyah.com"><img src="https://avatars2.githubusercontent.com/u/3952281?v=4" width="100px;" alt=""/><br /><sub><b>Cahyadi Triyansyah</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=SunDi3yansyah" title="Code">💻</a></td>
+    <td align="center"><a href="https://harshal.one"><img src="https://avatars0.githubusercontent.com/u/20720521?s=460&v=4" width="100px;" alt=""/><br /><sub><b>Harshal Parekh</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=Harshal96" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ppabcd"><img src="https://avatars0.githubusercontent.com/u/7419422?s=460&u=a8afa0f92608d126296e79f2ff0314a8fc794fd1&v=4" width="100px;" alt=""/><br /><sub><b>Reza Juliandri</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=ppabcd" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/shailesh-ladumor"><img src=https://avatars.githubusercontent.com/u/16555999?v=4" width="100px;" alt=""/><br /><sub><b>Shailesh Ladumor </b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=shailesh-ladumor" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/masif088"><img src=https://avatars.githubusercontent.com/u/43848973?v=4" width="100px;" alt=""/><br /><sub><b>masif088</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=masif088" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/BlazerYoo"><img src=https://avatars.githubusercontent.com/u/69565038?v=4" width="100px;" alt=""/><br /><sub><b>Boaz Yoo</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=BlazerYoo" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## Contributing
+Want to help Stisla get better? Let's contribute and follow our [contribution guide](https://github.com/stisla/stisla/blob/master/CONTRIBUTING.md).
+
+## Showcase
+
+- [app.whatspie.com](https://app.whatspie.com) - Enterprise ready unofficial WhatsApp API and BOT Service, allow you to sending notification to customer using WhatsApp API from your App
+- [kredibel.co.id](https://kredibel.co.id)- Kredibel is a site that can identify whether someone has the potential to commit fraud or not
+
+## Tutorials
+- [Stisla Introduction by Nauval](https://www.youtube.com/watch?v=dvnqtOUvGFc) (🇮🇩)
+- [How to setup Stisla in Laravel by Laravel Package Tutorial](https://www.youtube.com/playlist?list=PL0wCC44AhrC14hkSMdczlVaZvnD0WSdGv) (🏴󠁧󠁢󠁥󠁮󠁧󠁿)
+- [Integrate Stisla with Laravel by Mulai Dari NULL](https://www.youtube.com/watch?v=4-kdAxALCPc) (🇮🇩)
+- [Integrate Stisla with CodeIgniter 4 by Juvinal Man](https://www.youtube.com/watch?v=np4LsQNcJbg) (🇮🇩)
+- [Integrate Stisla with CodeIgniter 4 by YukCoding Media](https://www.youtube.com/watch?v=Kre5kJIufhw) (🇮🇩)
+
+## License
+Stisla is under the [MIT License](LICENSE)
+
+## Supported by BrowserStack
+Thanks to BrowserStack for their support of this open-source project.
+
+<a href="https://www.browserstack.com">
+  <img src="https://getstisla.com/svg/Browserstack-logo.svg" alt="BrowserStack" width="250">
+</a>

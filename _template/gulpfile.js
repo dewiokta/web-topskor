@@ -1,167 +1,211 @@
 /**
- * Gulp file to automate the various tasks
-**/
+ * Imports
+ */
+const {src, dest, watch, parallel} = require('gulp');
+const notify = require('gulp-notify');
+const browserSync = require('browser-sync').create();
+const sass = require('gulp-sass');
+const concat = require('gulp-concat');
+const plumber = require('gulp-plumber');
+const rename = require('gulp-rename');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const uglify = require('gulp-uglify-es').default;
+const imagemin = require('gulp-imagemin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const nunjucks = require('gulp-nunjucks');
+const color = require('gulp-color');
+const nodePath = require('path');
 
-var autoprefixer = require('gulp-autoprefixer');
-var browserSync = require('browser-sync').create();
-var csscomb = require('gulp-csscomb');
-var cleanCss = require('gulp-clean-css');
-var cssnano = require('gulp-cssnano');
-var composer = require('gulp-uglify/composer');
-var concat = require('gulp-concat');
-var del = require('del');
-var imagemin = require('gulp-imagemin');
-var htmlPrettify = require('gulp-html-prettify');
-var gulp = require('gulp');
-var gulpIf = require('gulp-if');
-var gulpRun = require('gulp-run');
-var gulpUtil = require('gulp-util');
-var npmDist = require('gulp-npm-dist');
-var postcss = require('gulp-postcss');
-var runSequence = require('run-sequence');
-var sass = require('gulp-sass');
-var uglifyEs = require('uglify-es');
-var uglify = composer(uglifyEs, console);
-var rename = require('gulp-rename');
-var useref = require('gulp-useref-plus');
-var wait = require('gulp-wait');
+/**
+ * Configuration
+ * @type {String}
+ */
+var cssDir = 'assets/css',
+    jsDir = 'assets/js',
+    htmlDir = 'sources/pages',
+    sassDir = 'sources/scss',
+    imgDir = 'assets/img';
 
-// Define paths
+/**
+ * Helpers
+ */
 
-var paths = {
-    dist: {
-        base: 'dist',
-        img:  'dist/assets/img',
-        libs: 'dist/assets/vendor'
-    },
-    base: {
-        base: './',
-        node: 'node_modules'
-    },
-    src: {
-        index: '/pages/dashboards/dashboard.html',
-        base: './',
-        css:  'assets/css',
-        html: '**/*.html',
-        img:  'assets/img/**/*.+(png|jpg|gif|svg)',
-        js:   'assets/js/**/*.js',
-        scss: 'assets/scss/**/*.scss'
+function _compile_html(path, onEnd, log=true, ret=false) {
+  if(log)
+    _log('[HTML] Compiling: ' + path, 'GREEN');
+
+  let compile_html = src(path, { base: htmlDir })
+  .pipe(plumber())
+  .pipe(nunjucks.compile({
+    version: '2.3.0',
+    site_name: 'Stisla'
+  },
+  /**
+   * Nunjucks options
+   */
+  {
+    trimBlocks: true,
+    lstripBlocks: true,
+    /**
+     * Nunjucks filters
+     * @type {Object}
+     */
+    filters: {
+      is_active: (str, reg, page) => {
+        reg = new RegExp(reg, 'gm');
+        reg = reg.exec(page);
+        if(reg != null) {
+          return str;
+        }
+      }
     }
+  }))
+  .on('error', console.error.bind(console))
+  .on('end', () => {
+    if(onEnd)
+      onEnd.call(this);
+
+    if(log)
+      _log('[HTML] Finished', 'GREEN');
+  })
+  .pipe(dest('pages'))
+  .pipe(plumber.stop());
+
+  if(ret) return compile_html;
 }
 
+function _compile_scss(path, onEnd, log=true, ret=false) {
+  if(log)
+    _log('[SCSS] Compiling:' + path, 'GREEN');
+
+  let compile_scss = src(path)
+  .pipe(plumber())
+  .pipe(sass({
+    errorLogToConsole: true
+  }))
+  .on('error', console.error.bind(console))
+  .on('end', () => {
+    if(onEnd)
+      onEnd.call(this);
+
+    if(log)
+      _log('[SCSS] Finished', 'GREEN');
+  })
+  .pipe(rename({
+    dirname: '',
+    extname: '.css'
+  }))
+  .pipe(postcss([autoprefixer()]))
+  .pipe(dest(cssDir))
+  .pipe(plumber.stop());
+
+  if(ret) return compile_scss;
+}
+
+function _log(str, clr) {
+  if(!clr) clr = 'WHITE';
+  console.log(color(str, clr));
+}
+
+/**
+ * End of helper
+ */
+
+/**
+ * Execution
+ */
+
+function folder() {
+  return src('*.*', {read: false})
+  .pipe(dest('./assets'))
+  .pipe(dest('./assets/css'))
+  .pipe(dest('./assets/js'))
+  .pipe(dest('./assets/img'));
+}
+
+function image() {
+  return src(imgDir + '/**/*.*')
+  .pipe(plumber())
+  .pipe(imagemin([
+    imageminMozjpeg({quality: 80})
+  ]))
+  .pipe(dest(imgDir))
+  .pipe(plumber.stop());
+}
+
+function compile_scss() {
+  return _compile_scss(sassDir + '/**/*.scss', null, false, true);
+}
+
+function compile_html() {
+  return _compile_html(htmlDir + '/**/*.html', null, false, true);
+}
+
+function watching() {
+  compile_scss();
+  compile_html();
+
+  /**
+   * BrowserSync initialization
+   * @type {Object}
+   */
+  browserSync.init({
+    server:{
+      baseDir: "./"
+    },
+    startPath: 'pages/index.html',
+    port: 8080
+  });
+
+  /**
+   * Watch ${htmlDir}
+   */
+  watch([
+    htmlDir + '/**/*.html',
+    sassDir + '/**/*.scss',
+    jsDir + '/**/*.js',
+    imgDir + '/**/*.*',
+  ]).on('change', (file) => {
+    file = file.replace(/\\/g, nodePath.sep);
+
+    if(file.indexOf('.scss') > -1) {
+      _compile_scss(sassDir + '/**/*.scss', () => {
+        return browserSync.reload();
+      });
+    }
+
+    if(file.indexOf('layouts') > -1 && file.indexOf('.html') > -1) {
+      _compile_html(htmlDir + '/*.html', () => {
+        return browserSync.reload();
+      });
+    }else if(file.indexOf('.html') > -1) {
+      _compile_html(file, () => {
+        return browserSync.reload();
+      });
+    }
+
+    if(file.indexOf(jsDir) > -1 || file.indexOf(imgDir) > -1) {
+      return browserSync.reload();
+    }
+  });
+}
+
+// Create folder first
+exports.folder = folder;
+
+// Minify images
+exports.image = image;
+
 // Compile SCSS
+exports.scss = compile_scss;
 
-gulp.task('scss', function() {
-  return gulp.src(paths.src.scss)
-    .pipe(wait(500))
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([require('postcss-flexbugs-fixes')]))
-    .pipe(autoprefixer({
-        browsers: ['> 1%']
-    }))
-    .pipe(csscomb())
-    .pipe(gulp.dest(paths.src.css))
-    .pipe(browserSync.reload({
-        stream: true
-    }));
-});
+// Compile HTML
+exports.html = compile_html;
 
-// Minify CSS
+// Dist
+exports.dist = parallel(folder, compile_scss, compile_html);
 
-gulp.task('minify:css', function() {
-  return gulp.src([
-        paths.src.css + '/argon.css'
-    ])
-    .pipe(cleanCss())
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest(paths.dist.base + '/css'))
-});
-
-// Concat JS files
-
-gulp.task('concat:js', function(done) {
-
-	files = [
-		paths.src.base + '/assets/js/components/license.js',
-		paths.src.base + '/assets/js/components/layout.js',
-		paths.src.base + '/assets/js/components/init/*js',
-		paths.src.base + '/assets/js/components/custom/*js',
-		paths.src.base + '/assets/js/components/maps/*js',
-		paths.src.base + '/assets/js/components/charts/*js',
-		paths.src.base + '/assets/js/components/vendor/*js'
-	];
-
-	return gulp
-		.src(files)
-		.pipe(concat("argon.js"))
-		.pipe(gulp.dest(paths.dist.base + '/js'));
-
-	done();
-});
-
-// Minify JS
-
-gulp.task('minify:js', function(cb) {
-    return gulp.src([
-            paths.src.base + '/assets/js/argon.js'
-        ])
-        .pipe(uglify())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest(paths.dist.base + '/js'))
-});
-
-// Live reload
-
-gulp.task('browserSync', function() {
-    browserSync.init({
-        server: {
-            baseDir: [paths.src.base, paths.base.base]
-        },
-        index: [paths.src.index]
-
-    })
-});
-
-// Watch for changes
-
-gulp.task('watch', gulp.series('browserSync', 'scss'), function() {
-    gulp.watch(paths.src.scss, ['scss']);
-    gulp.watch(paths.src.js, browserSync.reload);
-    gulp.watch(paths.src.html, browserSync.reload);
-});
-
-// Clean
-
-gulp.task('clean:dist', function() {
-    return del(paths.dist.base);
-});
-
-// Copy CSS
-
-gulp.task('copy:css', function() {
-    return gulp.src([
-        'assets/css/argon.css'
-    ])
-    .pipe(gulp.dest(paths.dist.base + '/css'))
-});
-
-// Copy JS
-
-gulp.task('copy:js', function() {
-    return gulp.src([
-        'assets/js/argon.js'
-    ])
-    .pipe(gulp.dest(paths.dist.base + '/js'))
-});
-
-// Build
-
-gulp.task('build',
-    gulp.series('clean:dist', 'scss', 'copy:css', 'copy:js', 'concat:js', 'minify:js', 'minify:css')
-);
-
-// Default
-
-gulp.task('default',
-    gulp.series('scss', 'browserSync', 'watch')
-);
+// Run this command for dev.
+exports.default = watching;
