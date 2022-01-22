@@ -26,10 +26,6 @@ class ZonaSeeder extends Seeder
         ]);
 
         DB::table('zonas')->insert([
-        	'namaKota' => 'Balikpapan',
-        ]);
-
-        DB::table('zonas')->insert([
         	'namaKota' => 'Malang',
         ]);
 
@@ -55,6 +51,10 @@ class ZonaSeeder extends Seeder
 
         DB::table('zonas')->insert([
         	'namaKota' => 'Lampung',
+        ]);
+
+        DB::table('zonas')->insert([
+        	'namaKota' => 'Papua',
         ]);
     }
 }

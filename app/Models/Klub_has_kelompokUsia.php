@@ -17,4 +17,6 @@ class klub_has_kelompokUsia extends Model
     {
         return $this->belongsTo(Klub::class, 'klub_id', 'id');
     }
+
+
 }
