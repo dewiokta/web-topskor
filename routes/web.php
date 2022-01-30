@@ -25,7 +25,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin/login');
-Route::get('/manajer', [App\Http\Controllers\ManajerController::class, 'index'])->name('manajer.dashboard');
 
 // klub
 Route::get('/klub', [App\Http\Controllers\KlubController::class, 'index'])->name('klub');
@@ -39,4 +38,11 @@ Route::get('/official/create', [App\Http\Controllers\OfficialController::class, 
 Route::get('/pemain', [App\Http\Controllers\PemainController::class, 'index'])->name('pemain');
 Route::get('/pemain/create', [App\Http\Controllers\PemainController::class, 'create'])->name('pemain.create');
 
+//usia
+Route::get('/usia', [App\Http\Controllers\UsiaController::class, 'index'])->name('usia');
 
+//zona
+Route::get('/zona', [App\Http\Controllers\ZonaController::class, 'index'])->name('zona');
+
+//manajer
+Route::get('/manajer', [App\Http\Controllers\ManajerController::class, 'index'])->name('manajer');

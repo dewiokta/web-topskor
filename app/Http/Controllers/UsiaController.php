@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Yajra\DataTables\Services\DataTable;
 
-class ManajerController extends Controller
+class UsiaController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,7 +21,12 @@ class ManajerController extends Controller
      */
     public function index()
     {
-        return view('admin-zona.manajer.index');
+        return view('admin-zona.usia.index');
     }
+
+    // public function create()
+    // {
+    //     return view('manajer.pemain.create');
+    // }
 
 }
