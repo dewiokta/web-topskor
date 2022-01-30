@@ -21,10 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin/login');
 
 // klub
 Route::get('/klub', [App\Http\Controllers\KlubController::class, 'index'])->name('klub');
@@ -46,3 +43,14 @@ Route::get('/zona', [App\Http\Controllers\ZonaController::class, 'index'])->name
 
 //manajer
 Route::get('/manajer', [App\Http\Controllers\ManajerController::class, 'index'])->name('manajer');
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
+Route::get('/informasi', [App\Http\Controllers\InformasiUmumController::class, 'index'])->name('informasi');
+
+//auth route for both 
+Route::group(['middleware' => ['auth']], function() { 
+    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+});
+
+
+
+require __DIR__.'/auth.php';

@@ -6,8 +6,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" href="images/logo_title.png">
+    <title>Liga Topskor Indonesia</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,63 +21,76 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container" style="margin-top: 15px; margin-bottom: 15px;">
+            <a class="navbar-brand" href="/">
+                <img src="{{ url('images/logo.png') }}" height="72" width="253">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  href="/about">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  href="/informasi">Informasi Umum</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+    <footer class="site-footer text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="footernote">
+                        Connect with PT Topskor Indonesia
+                    </p>
+                    <p>
+                        <a href="#" class="social-item"><span class="fab fa-whatsapp"></span></a>
+                        <a href="#" class="social-item"><span class="fab fa-facebook"></span></a>
+                        <a href="#" class="social-item"><span class="fab fa-twitter"></span></a>
+                        <a href="#" class="social-item"><span class="fab fa-instagram"></span></a>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy; <script>
+                        document.write(new Date().getFullYear());
+                    </script> All rights reserved | This website is made <i class="fas fa-heart" aria-hidden="true" style="color: #B22222"></i> Malang State Polytechnic Student
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+    </footer>
+    <script src="js/jquery-.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/anim.js"></script>
+    <script>
+        //----HOVER CAPTION---//	  
+        jQuery(document).ready(function($) {
+            $('.fadeshop').hover(
+                function() {
+                    $(this).find('.captionshop').fadeIn(150);
+                },
+                function() {
+                    $(this).find('.captionshop').fadeOut(150);
+                }
+            );
+        });
+    </script>
 </body>
 </html>

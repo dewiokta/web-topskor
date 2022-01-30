@@ -38,7 +38,7 @@ nav{
 nav ul{
   float: right;
   margin: 0;
-  margin-right: 1.9rem;
+  margin-right: 2.9rem;
 }
 
 nav ul li{
@@ -48,8 +48,9 @@ nav ul li{
 
 nav ul li a{
   text-decoration: none;
-  color: #fff;
+  color: #000;
   padding: 20px;
+  font-size: 1rem;
 }
 
 nav h1{
@@ -65,7 +66,7 @@ nav h1{
   margin-left: 1.5rem;
 }
 
-nav ul li:hover{
+nav ul li a:hover{
   background-color: #0A2941;
   width: auto;
   color: white;
@@ -810,7 +811,7 @@ a:active {
 }
 
 .site-footer {
-  background:#222;
+  background:#0C1C3A;
 	color:#999;
 	font-size:14px;
 	padding:60px 0 40px 0;
