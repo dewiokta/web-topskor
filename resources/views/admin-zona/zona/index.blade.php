@@ -27,7 +27,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary btn-icon" href="">
+                                            <li class="fas fa-edit"></li>
+                                        </a>
+                                        <a class="btn btn-sm btn-info btn-icon" href="" data-toggle="modal" data-target="#exampleModalScrollable">
+                                            <li class="fas fa-eye" data-pack="ios" data-tags="view, see, exposed, look"></li>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger btn-icon" href="">
+                                            <li class="fas fa-trash" data-pack="ios" data-tags="view, see, exposed, look"></li>
+                                        </a>
+                                    </td>
                                 </tbody>
                             </table>
                         </div>
@@ -60,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer text-right">                    
+                        <div class="card-footer text-right">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button class="btn btn-primary">Add</button>
                         </div>
@@ -69,4 +81,32 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+
+<!-- detail data -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Data Zona</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Zona</td>
+                            <td>: </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

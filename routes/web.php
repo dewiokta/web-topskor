@@ -46,3 +46,14 @@ Route::get('/zona', [App\Http\Controllers\ZonaController::class, 'index'])->name
 
 //manajer
 Route::get('/manajer', [App\Http\Controllers\ManajerController::class, 'index'])->name('manajer');
+
+//admin-zona
+//klub
+Route::get('/admin-klub', [App\Http\Controllers\AdminController::class, 'klub'])->name('admin-klub');
+
+//official
+Route::get('/admin-official', [App\Http\Controllers\AdminController::class, 'official'])->name('admin-official');
+
+//pemain
+Route::get('/admin-pemain', [App\Http\Controllers\AdminController::class, 'pemain'])->name('admin-pemain');
+

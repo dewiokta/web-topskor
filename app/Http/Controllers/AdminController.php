@@ -22,4 +22,16 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
+
+    public function klub(){
+        return view('admin-zona.klub.index');
+    }
+
+    public function official(){
+        return view('admin-zona.official.index');
+    }
+
+    public function pemain(){
+        return view('admin-zona.pemain.index');
+    }
 }
