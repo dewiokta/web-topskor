@@ -12,12 +12,9 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-<<<<<<< HEAD
         "yajra/laravel-datatables": "1.5",
-        "yajra/laravel-datatables-oracle": "^9.19"
-=======
+        "yajra/laravel-datatables-oracle": "^9.19",
         "santigarcor/laratrust": "^6.3"
->>>>>>> cea8ae8eb1fe627e782b5792f87a6849faf7a2c1
     },
     "require-dev": {
         "facade/ignition": "^2.5",
