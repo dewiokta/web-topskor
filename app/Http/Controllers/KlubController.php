@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Klub;
+use App\Models\Zona;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Services\DataTable;
 
@@ -19,14 +21,37 @@ class KlubController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function update(Request $request, $id)
     {
-        return view('manajer.klub.index');
-    }
 
-    public function create()
-    {
-        return view('manajer.klub.create-klub');
-    }
+        $zona = Zona::where('id', $id)->first();
+        $klub = new Klub;
+        $klub->zona_id = $zona->id;
+        $klub->namaKlub = $request->namaKlub;
+        $klub->partisipasi_diligatopskor = $request->partisipasi_diligatopskor;
+        $klub->akte_sbb = $request->akte_sbb;
+        $klub->alamat_bersurat = $request->alamat_bersurat;
+        $klub->alamat_latihan = $request->alamat_latihan;
+        $klub->medsos_url = $request->medsos_url;
+        $klub->no_hp = $request->no_hp;
+        $klub->website = $request->website;
+        $klub->penanggungjawab_klub = $request->penanggungjawab_klub;
+        $klub->jumlah_pelatih = $request->jumlah_pelatih;
+        $klub->jumlah_siswa = $request->jumlah_siswa;
+        $klub->keanggotaan_askot_askab = $request->keanggotaan_askot_askab;
+        $klub->prestasi = $request->prestasi;
+        $klub->kompetisi_yangdiikuti = $request->kompetisi_yangdiikuti;
+        $zona_id =  $zona->id;
+        $file = $request->file('logo_klub');
+        // Mendapatkan Nama File
+        $nama_file = $file->getClientOriginalName();
 
+        // Proses Upload File
+        $destinationPath = 'images\logo_klub';
+        $file->move($destinationPath, $file->getClientOriginalName());
+        $klub->logo_klub = $nama_file;
+        $klub->save();
+        return redirect('klub/'.$zona_id);
+        
+    }
 }
