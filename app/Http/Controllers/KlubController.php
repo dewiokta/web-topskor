@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Models\Klub;
 use App\Models\Zona;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Services\DataTable;
 
@@ -26,7 +27,9 @@ class KlubController extends Controller
 
         $zona = Zona::where('id', $id)->first();
         $klub = new Klub;
+        $user = User::where('id', Auth::user()->id)->first();
         $klub->zona_id = $zona->id;
+        $klub->user_id = $user->id;
         $klub->namaKlub = $request->namaKlub;
         $klub->partisipasi_diligatopskor = $request->partisipasi_diligatopskor;
         $klub->akte_sbb = $request->akte_sbb;
@@ -51,7 +54,12 @@ class KlubController extends Controller
         $file->move($destinationPath, $file->getClientOriginalName());
         $klub->logo_klub = $nama_file;
         $klub->save();
-        return redirect('klub/'.$zona_id);
+        return redirect('official/'.$zona_id);
         
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 }

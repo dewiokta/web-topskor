@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+
      public function index()
      {
           if (Auth::user()->hasRole('adminpusat')) {
@@ -15,10 +21,16 @@ class DashboardController extends Controller
           } elseif (Auth::user()->hasRole('adminzona')) {
                return view('adminzona_dash');
           } elseif (Auth::user()->hasRole('manajertim')) {
-               $zonas = Zona::all();
-               return view('zona', [
-                    'zonas' => $zonas,
-               ]);
+               return view('first-page');
           }
      }
+
+     public function zona()
+     {
+          $zonas = Zona::all();
+          return view('zona', [
+               'zonas' => $zonas,
+          ]);
+     }
+     
 }

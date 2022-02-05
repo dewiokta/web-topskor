@@ -37,6 +37,7 @@ Route::get('/manajer', [App\Http\Controllers\ManajerController::class, 'index'])
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+    Route::get('/pilih-zona', 'App\Http\Controllers\DashboardController@zona')->name('pilih-zona');
 
     // pemain
     Route::get('/pemain/{id}', [App\Http\Controllers\ZonaController::class, 'pemain'])->name('pemain.zona');
@@ -47,7 +48,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     // official
     Route::get('/official/{id}', [App\Http\Controllers\ZonaController::class, 'official'])->name('official.zona');
-    Route::get('/official/create', [App\Http\Controllers\OfficialController::class, 'create'])->name('official.create');
+    Route::match(['get', 'post'], '/official/add/{id}',  [App\Http\Controllers\OfficialController::class, 'store'])->name('official.create');
+    Route::get('/official-detail/{id}', [App\Http\Controllers\OfficialController::class, 'detail'])->name('official.detail');
+    Route::post('/official-detail/{id}', 'App\Http\Controllers\OfficialController@edit')->name('official.update');
+    Route::delete('/official/{id}', 'App\Http\Controllers\OfficialController@delete');
 });
 
 

@@ -77,7 +77,7 @@
                     </div>
                     <br><br><br>
                     <ul class="sidebar-menu">
-                        <li class=""><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-city"></i> <span>Pilih Zona</span></a></li>
+                        <li class=""><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-city"></i> <span> Welcome to Topskor</span></a></li>
                     </ul>
                 </aside>
             </div>

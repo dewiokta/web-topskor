@@ -9,7 +9,6 @@
     <div class="section-body">
         <div class="container py-4">
             <div class="row">
-
                 <div class="col-md-12 mt-2">
                     <div class="card">
                         <div class="card-body">
@@ -214,7 +213,7 @@
                                 <div class="form-group row">
                                     <label for="logo_klub" class="col-md-2 col-form-label text-md-right">Logo Klub</label>
 
-                                    <div class="col">
+                                    <div class="col-md-6">
                                         <input value="Upload" placeholder="Masukkan Logo Klub" style="background-color: #ecebeb; color: black;" id="logo_klub" type="file" class="form-control @error('logo_klub') is-invalid @enderror" name="logo_klub">
 
                                         @error('logo_klub')
@@ -224,21 +223,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <!-- <div class="form-group row">
-                                    <label class="col-md-2 col-form-label text-md-right">Logo Klub</label>
-                                    <div class="input-group mb-2 mr-sm-2 col-sm-6">
-                                        <div class="custom-file">
-                                            <input type="file" name="logo_klub" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Choose file</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label"></label>
-                                        <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                            <img id="blah" src="#" alt="your logo" />
-                                        </div>
-                                    </div>
-                                </div> -->
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-2">
@@ -251,93 +235,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h6><i class="fa fa-user"></i> Data Klub Anda</h6>
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td>Nama Klub</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Zona</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Alamat Bersurat</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Alamat Latihan</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Media Sosial (URL)</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>No. Telp</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Website (URL)</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Penanggungjawab</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jumlah Siswa</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keanggotaan ASKOT/ASKAB</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Akte SSB</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kompetisi Yang Diikuti</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Partisipasi Di Liga Topskor</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Prestasi</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Logo Klub</td>
-                                        <td>:</td>
-                                        <td>#</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-@extends('layouts.manajer')
+@extends('layouts.pemain')
 @section('content')
 <section class="section">
     <div class="section-header">

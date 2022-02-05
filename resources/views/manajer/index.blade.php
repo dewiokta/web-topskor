@@ -1,4 +1,4 @@
-@extends('layouts.manajer')
+@extends('layouts.pemain')
 
 @section('content')
 <!-- main content -->

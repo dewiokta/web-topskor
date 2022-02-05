@@ -77,11 +77,13 @@
                     </div>
                     <br><br><br>
                     <ul class="sidebar-menu">
-                        <li class=""><a class="nav-link" href="{{ route('klub.zona', $zona->id) }}"><i class="fas fa-football-ball"></i> <span>Klub Sepak Bola</span></a></li>
+                        <li style="pointer-events:none; opacity:0.6;"><a class="nav-link" href="{{ route('klub.zona', $zona->id) }}"><i class="fas fa-football-ball"></i> <span>Klub Sepak Bola</span></a></li>
+                        <li style="pointer-events:none; opacity:0.6;"><a class="nav-link" href="{{ route('official.zona', $zona->id) }}"><i class="fas fa-user-friends"></i> <span>Official Team</span></a></li>
+                        <li class=""><a class="nav-link" href="{{ route('pemain.zona', $zona->id) }}"><i class="fas fa-user-alt"></i> <span>Pemain</span></a></li>
                     </ul>
                     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-                        <a href="{{ route('official.zona', $zona->id) }}" class="btn btn-primary btn-lg btn-block btn-icon-split">
-                            <i class="fas fa-rocket"></i> Selanjutnya
+                        <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                            <i class="fas fa-rocket"></i> Selesai
                         </a>
                     </div>
                 </aside>

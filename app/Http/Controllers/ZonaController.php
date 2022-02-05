@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Kelompok_usia;
+use App\Models\Klub;
+use App\Models\Official;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Services\DataTable;
 use App\Models\Zona;
@@ -39,9 +42,11 @@ class ZonaController extends Controller
     }
 
     public function official($id)
-    {
+    { 
+        $official = Official::where('user_id', Auth::user()->id)->get();
         $zona = Zona::where('id', $id)->first();
-    	return view('manajer.official.index', compact('zona'));
+        $klub = DB::table('klubs')->where('user_id',Auth::user()->id)->get();
+    	return view('manajer.official.index', compact('zona', 'klub', 'official'));
     }
 
     public function klub($id)
