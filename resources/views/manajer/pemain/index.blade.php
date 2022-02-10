@@ -1,5 +1,14 @@
 @extends('layouts.pemain')
 @section('content')
+<style media="screen">
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+</style>
 <section class="section">
     <div class="section-header">
         <h1>Tim Anda Akan Masuk Dalam Zona <b style="color: red;">"{{ $zona->namaKota }}"</b></h1>
@@ -15,6 +24,7 @@
                             <button style="float: right; font-weight: 600; background: 	#8B0000; color: white;" class="btn " type="button" data-toggle="modal" data-target="#CreateArticleModal">
                                 Buat Baru
                             </button>
+                            <a class="btn btn-warning btn-sm" href="{{ route('kelusia', $zona->id) }}">Daftar Kelompok Usia</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -23,18 +33,54 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">
-                                            #
+                                            No.
                                         </th>
                                         <th>Nama</th>
-                                        <th>Foto</th>
                                         <th>Zona</th>
-                                        <th>Kelompok Usia</th>
+                                        <th>Klub</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Kelompok Usia</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $no = 1; ?>
+                                    @foreach ($pemain as $pemains)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $pemains->namaPemain }}</td>
+                                        <td>{{ $pemains->zona }}</td>
+                                        <td>{{ $pemains->klub }}</td>
+                                        <td style="color: #8B0000;">{{ $pemains->status }}</td>
+                                        <td>
+                                            <form class="needs-validation form-inline" method="POST" action="{{ url('/pemain/kelusia') }}/{{ $zona->id }}/{{ $pemains->id }}">
+                                                {{ csrf_field() }}
+                                                <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="usia" id="cars">
 
+                                                    <option value="Pilih Usiaa">Pilih Usia</option>
+                                                    @foreach($zonakel as $zonakels)
+                                                    <option value="{{ $zonakels->kelompok_usia->id }}">{{ $zonakels->kelompok_usia->usia }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <button type="submit" class="btn btn-primary"> Tambah</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <div class="button">
+                                                <ul class="right">
+                                                    <form action="{{ url('pemain') }}/{{ $pemains->id }}" method="post">
+                                                        @csrf
+                                                        {{ method_field('DELETE') }}
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data pemain ini?');">Hapus</button>
+                                                    </form>
+                                                </ul>
+                                                <ul class="left">
+                                                    <a class="btn btn-info btn-sm" href="{{ route('pemain.detail', [$zona->id, $pemains->id])}}">Detail</a>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -55,12 +101,13 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="card">
-                    <form class="needs-validation form-inline" novalidate="">
+                    <form class="needs-validation form-inline" method="POST" action="{{ url('pemain/add', $zona->id) }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nama Lengkap</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                    <input type="text" class="form-control" required="" placeholder="">
+                                    <input type="text" name="namaPemain" class="form-control" required="" placeholder="">
                                     <div class="invalid-feedback">
                                         Nama Harus diisi
                                     </div>
@@ -69,7 +116,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">TTL</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                    <input type="date" class="form-control" required="" placeholder="">
+                                    <input type="date" name="ttl" class="form-control" required="" placeholder="">
                                     <div class="invalid-feedback">
                                         TTL Harus diisi
                                     </div>
@@ -78,7 +125,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Sekolah</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                    <input type="text" class="form-control" required="" placeholder="">
+                                    <input type="text" name="sekolah" class="form-control" required="" placeholder="">
                                     <div class="invalid-feedback">
                                         Sekolah Harus diisi
                                     </div>
@@ -87,7 +134,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">NISN</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                    <input type="text" class="form-control" required="" placeholder="">
+                                    <input type="text" name="nisn" class="form-control" required="" placeholder="">
                                     <div class="invalid-feedback">
                                         NISN Harus diisi
                                     </div>
@@ -96,7 +143,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nomor Punggung</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                    <input type="number" class="form-control" required="" placeholder="">
+                                    <input type="number" name="no_punggung" class="form-control" required="" placeholder="">
                                     <div class="invalid-feedback">
                                         Nomor Punggung Harus diisi
                                     </div>
@@ -105,7 +152,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Posisi</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                    <input type="text" class="form-control" required="" placeholder="">
+                                    <input type="text" name="posisi" class="form-control" required="" placeholder="">
                                     <div class="invalid-feedback">
                                         Posisi Harus diisi
                                     </div>
@@ -120,28 +167,41 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                @foreach($klub as $klubs)
+                                <label class="col-sm-2 col-form-label">Klub</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="klub" id="cars" disabled>
+                                        <option value="zona">{{ $klubs->namaKlub }}</option>
+                                    </select>
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Foto Pemain</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" onchange="readURL(this);">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                        <input value="Upload" placeholder="Masukkan Logo Klub" type="file" name="foto" class="form-control @error('foto') is-invalid @enderror" onchange="readURL(this);">
+                                        @error('foto')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label"></label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                    <img id="blah" src="#" alt="your logo" />
+                                    <img id="blah" src="#" alt="foto pemainmu" />
                                 </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success" id="SubmitCreateArticleForm">Kirim</button>
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        </div>
                     </form>
                 </div>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="SubmitCreateArticleForm">Kirim</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             </div>
         </div>
     </div>

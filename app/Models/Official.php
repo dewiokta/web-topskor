@@ -13,26 +13,13 @@ class Official extends Model
         return $this->belongsTo(Klub::class, 'klub_id', 'id');
     }
 
-    protected $table = 'officials';
-    protected $guarded = array();
-
-    public function storeData($input)
+    public function zona()
     {
-        return static::create($input);
+        return $this->belongsTo(Zona::class, 'klub_id', 'id');
     }
 
-    public function deleteData($id)
+    public function user()
     {
-        return static::find($id)->delete();
-    }
-
-    public function findData($id)
-    {
-        return static::find($id);
-    }
-
-    public function updateData($id, $input)
-    {
-        return static::find($id)->update($input);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

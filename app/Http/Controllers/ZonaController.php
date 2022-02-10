@@ -6,9 +6,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Kelompok_usia;
 use App\Models\Klub;
 use App\Models\Official;
+use App\Models\Pemain;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Services\DataTable;
 use App\Models\Zona;
+use App\Models\Zona_has_KelompokUsia;
 use Illuminate\Support\Facades\DB;
 
 class ZonaController extends Controller
@@ -38,21 +40,24 @@ class ZonaController extends Controller
     public function pemain($id)
     {
         $zona = Zona::where('id', $id)->first();
-    	return view('manajer.pemain.index', compact('zona'));
+        $zonakel = Zona_has_KelompokUsia::where('zona_id', $id)->get();
+        $klub = DB::table('klubs')->where('user_id', Auth::user()->id)->get();
+        $pemain = Pemain::where('user_id', Auth::user()->id)->get();
+        return view('manajer.pemain.index', compact('zona', 'klub', 'zonakel', 'pemain'));
     }
 
     public function official($id)
-    { 
+    {
         $official = Official::where('user_id', Auth::user()->id)->get();
         $zona = Zona::where('id', $id)->first();
-        $klub = DB::table('klubs')->where('user_id',Auth::user()->id)->get();
-    	return view('manajer.official.index', compact('zona', 'klub', 'official'));
+        $klub = DB::table('klubs')->where('user_id', Auth::user()->id)->get();
+        return view('manajer.official.index', compact('zona', 'klub', 'official'));
     }
 
     public function klub($id)
     {
         $zona = Zona::where('id', $id)->first();
-    	return view('manajer.klub.index', compact('zona'));
+        return view('manajer.klub.index', compact('zona'));
     }
 
     // public function render($kelompokusia)
@@ -63,7 +68,7 @@ class ZonaController extends Controller
     //         'kelompok_usias' => Kelompok_usia::all(),
     //         'title' => 'Kelompok Usia Pemain '.$kelompokusia
     //     ]);
-       
+
     // }
 
 }

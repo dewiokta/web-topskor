@@ -1,5 +1,6 @@
 @extends('layouts.official')
 @section('content')
+
 <style media="screen">
     .left {
         float: left;
@@ -15,11 +16,11 @@
     </div>
     <div class="input-group mb-3">
         <form action="#" method="GET">
-        {{ csrf_field() }}
+            {{ csrf_field() }}
             <input type="text" name="name" placeholder="Searching...." class="form-control bg-white">
         </form>
         <div class="input-group-prepend">
-            <span class="input-group-text"  id="basic-addon1">
+            <span class="input-group-text" id="basic-addon1">
                 <i class="fas fa-search"></i>
             </span>
         </div>
@@ -71,8 +72,9 @@
                                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data official ini?');">Hapus</button>
                                                     </form>
                                                 </ul>
+                                                
                                                 <ul class="left">
-                                                    <a class="btn btn-info btn-sm" href="{{ route('official.detail', $officials->id) }}">Detail</a>
+                                                    <a class="btn btn-info btn-sm" href="{{ route('official.detail', [$zona->id, $officials->id]) }}">Detail</a>
                                                 </ul>
                                             </div>
                                         </td>
@@ -98,114 +100,114 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="card">
-                    <form class="needs-validation form-inline" method="POST" action="{{ url('official/add', $zona->id) }}" enctype="multipart/form-data"">
-                    {{ csrf_field() }}
+                    <form class="needs-validation form-inline" method="POST" action="{{ url('official/add', $zona->id) }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         <div class=" card-body">
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Nama Lengkap</label>
-                            <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                <input type="text" name="namaOfficial" class="form-control" required="" placeholder="">
-                                <div class="invalid-feedback">
-                                    Nama Harus diisi
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Nama Lengkap</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <input type="text" name="namaOfficial" class="form-control" required="" placeholder="">
+                                    <div class="invalid-feedback">
+                                        Nama Harus diisi
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Jabatan</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <input type="text" name="jabatan" class="form-control" required="" placeholder="">
+                                    <div class="invalid-feedback">
+                                        Jabatan Harus diisi
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Lisensi</label>
+                                <div class="form-check form-check-inline ">
+                                    <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="A">
+                                    <label class="form-check-label" for="inlineCheckbox1">A</label>
+                                </div>
+                                <div class="form-check form-check-inline ">
+                                    <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="B">
+                                    <label class="form-check-label" for="inlineCheckbox2">B</label>
+                                </div>
+                                <div class="form-check form-check-inline ">
+                                    <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="C">
+                                    <label class="form-check-label" for="inlineCheckbox3">C</label>
+                                </div>
+                                <div class="form-check form-check-inline ">
+                                    <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="D">
+                                    <label class="form-check-label" for="inlineCheckbox3">D</label>
+                                </div>
+                                <div class="form-check form-check-inline ">
+                                    <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Non-Lisensi">
+                                    <label class="form-check-label" for="inlineCheckbox3">Non-Lisensi</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">TTL</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <input name="ttl" type="date" class="form-control" required="" placeholder="">
+                                    <div class="invalid-feedback">
+                                        TTL Harus diisi
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Nomor Telepon</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <input name="no_hp" type="text" class="form-control" required="" placeholder="">
+                                    <div class="invalid-feedback">
+                                        Nomor Telepon Harus diisi
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Email</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <input type="email" name="email" class="form-control" required="">
+                                    <div class="invalid-feedback">
+                                        Email is invalid.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Zona</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="zona" id="cars" disabled>
+                                        <option value="zona">{{ $zona->namaKota }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @foreach($klub as $klubs)
+                                <label class="col-sm-2 col-form-label">Klub</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="klub" id="cars" disabled>
+                                        <option value="zona">{{ $klubs->namaKlub }}</option>
+                                    </select>
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Media Sosial</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <input name="medsos_url" type="text" class="form-control" required="" placeholder="">
+                                    <div class="invalid-feedback">
+                                        Media Sosial Harus diisi
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Jabatan</label>
-                            <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                <input type="text" name="jabatan" class="form-control" required="" placeholder="">
-                                <div class="invalid-feedback">
-                                    Jabatan Harus diisi
-                                </div>
-                            </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success" id="SubmitCreateArticleForm">Kirim</button>
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Batal</button>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Lisensi</label>
-                            <div class="form-check form-check-inline ">
-                                <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="A">
-                                <label class="form-check-label" for="inlineCheckbox1">A</label>
-                            </div>
-                            <div class="form-check form-check-inline ">
-                                <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="B">
-                                <label class="form-check-label" for="inlineCheckbox2">B</label>
-                            </div>
-                            <div class="form-check form-check-inline ">
-                                <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="C">
-                                <label class="form-check-label" for="inlineCheckbox3">C</label>
-                            </div>
-                            <div class="form-check form-check-inline ">
-                                <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="D">
-                                <label class="form-check-label" for="inlineCheckbox3">D</label>
-                            </div>
-                            <div class="form-check form-check-inline ">
-                                <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Non-Lisensi">
-                                <label class="form-check-label" for="inlineCheckbox3">Non-Lisensi</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">TTL</label>
-                            <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                <input name="ttl" type="date" class="form-control" required="" placeholder="">
-                                <div class="invalid-feedback">
-                                    TTL Harus diisi
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Nomor Telepon</label>
-                            <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                <input name="no_hp" type="text" class="form-control" required="" placeholder="">
-                                <div class="invalid-feedback">
-                                    Nomor Telepon Harus diisi
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Email</label>
-                            <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                <input type="email" name="email" class="form-control" required="">
-                                <div class="invalid-feedback">
-                                    Email is invalid.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Zona</label>
-                            <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="zona" id="cars" disabled>
-                                    <option value="zona">{{ $zona->namaKota }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            @foreach($klub as $klubs)
-                            <label class="col-sm-2 col-form-label">Klub</label>
-                            <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="klub" id="cars" disabled>
-                                    <option value="zona">{{ $klubs->namaKlub }}</option>
-                                </select>
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Media Sosial</label>
-                            <div class="input-group mb-2 mr-sm-2 col-sm-8">
-                                <input name="medsos_url" type="text" class="form-control" required="" placeholder="">
-                                <div class="invalid-feedback">
-                                    Media Sosial Harus diisi
-                                </div>
-                            </div>
-                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" id="SubmitCreateArticleForm">Kirim</button>
-                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                </div>
-                </form>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 @endsection

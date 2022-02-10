@@ -15,8 +15,9 @@
     <link rel="stylesheet" href="../node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
+    
+    <link href="{!! asset('assets/css/style.css') !!}" rel="stylesheet">
+    <link href="{!! asset('assets/css/componn.css') !!}" rel="stylesheet">
     <style>
         .navbar-bg {
             background-color: #272358;
@@ -45,7 +46,7 @@
                 </form>
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                            <img alt="image" src="{!! asset('assets/img/avatar/avatar-1.png') !!}" class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -73,7 +74,7 @@
                     </div>
                     <br>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="#"><img src="../images/logo-topskor.png" height="60" alt=""></a>
+                        <a href="#"><img src="{!! asset('assets/img/logo-topskor.png') !!}" height="60" alt=""></a>
                     </div>
                     <br><br><br>
                     <ul class="sidebar-menu">

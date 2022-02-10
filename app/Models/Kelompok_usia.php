@@ -18,4 +18,9 @@ class Kelompok_usia extends Model
         return $this->hasMany(Zona_has_kelompokUsia::class, 'kelusia_id', 'id');
     }
 
+    public function pemain_has_kelompokUsias()
+    {
+        return $this->hasMany(Pemain_has_kelompokUsia::class, 'kelusia_id', 'id');
+    }
+
 }

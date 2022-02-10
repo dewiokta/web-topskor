@@ -77,7 +77,10 @@
                     </div>
                     <br><br><br>
                     <ul class="sidebar-menu">
-                        <li class=""><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-city"></i> <span>Pilih Zona</span></a></li>
+                        <li><a class="nav-link" href="{{ route('klub.zona', $zona->id) }}"><i class="fas fa-football-ball"></i> <span>Klub Sepak Bola</span></a></li>
+                        <li><a class="nav-link" href="{{ route('official.zona', $zona->id) }}"><i class="fas fa-user-friends"></i> <span>Official Team</span></a></li>
+                        <li class=""><a class="nav-link" href="{{ route('pemain.zona', $zona->id) }}"><i class="fas fa-user-alt"></i> <span>Pemain</span></a></li>
+                    </ul>
                     </ul>
                 </aside>
             </div>

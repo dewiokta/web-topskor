@@ -49,4 +49,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pemain::class, 'user_id', 'id');
     }
+
+    public function klubs()
+    {
+        return $this->hasMany(Klub::class, 'user_id', 'id');
+    }
+
+    public function officials()
+    {
+        return $this->hasMany(Official::class, 'user_id', 'id');
+    }
 }

@@ -33,6 +33,7 @@ class OfficialController extends Controller
     {
         $this->middleware('auth');
     }
+    
     public function store(Request $request, $id)
     {
         $zona = Zona::where('id', $id)->first();
@@ -57,9 +58,9 @@ class OfficialController extends Controller
         return redirect('official/' . $zona_id);
     }
 
-    public function detail($id)
+    public function detail($id, $official_id)
     {
-        $official = Official::where('id', $id)->get();
+        $official = Official::where('id', $official_id)->get();
         $zona = Zona::where('id', $id)->first();
         $klub = DB::table('klubs')->where('user_id', Auth::user()->id)->get();
         return view('manajer.official.detail', compact('zona', 'klub', 'official'));
