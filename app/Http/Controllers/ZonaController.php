@@ -7,6 +7,8 @@ use App\Models\Kelompok_usia;
 use App\Models\Klub;
 use App\Models\Official;
 use App\Models\Pemain;
+use App\Models\Pemain_has_kelompokUsia;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Services\DataTable;
 use App\Models\Zona;
@@ -37,38 +39,45 @@ class ZonaController extends Controller
         $this->middleware('auth');
     }
 
-    public function pemain($id)
+    public function pemain()
     {
-        $zona = Zona::where('id', $id)->first();
-        $zonakel = Zona_has_KelompokUsia::where('zona_id', $id)->get();
+        $user =  DB::table('users')
+        ->join('zonas', 'zonas.id', '=', 'users.zona_id')
+        ->select('zonas.*', 'users.*')->where('users.id', '=', Auth::user()->id)
+        ->get();
+        $userr =  DB::table('users')
+        ->join('zonas', 'zonas.id', '=', 'users.zona_id')
+        ->select('zonas.*', 'users.*')->where('users.id', '=', Auth::user()->id)
+        ->first();
+        $zonakel = Zona_has_KelompokUsia::where('zona_id', $userr->zona_id)->get();
         $klub = DB::table('klubs')->where('user_id', Auth::user()->id)->get();
         $pemain = Pemain::where('user_id', Auth::user()->id)->get();
-        return view('manajer.pemain.index', compact('zona', 'klub', 'zonakel', 'pemain'));
+        $pemainn = Pemain::where('user_id', Auth::user()->id)->first();
+        return view('manajer.pemain.index', compact('user', 'klub', 'zonakel', 'pemain'));
     }
 
-    public function official($id)
+    public function official()
     {
+        $user =  DB::table('users')
+            ->join('zonas', 'zonas.id', '=', 'users.zona_id')
+            ->select('zonas.namaKota', 'users.*')->where('users.id', '=', Auth::user()->id)
+            ->get();
         $official = Official::where('user_id', Auth::user()->id)->get();
-        $zona = Zona::where('id', $id)->first();
         $klub = DB::table('klubs')->where('user_id', Auth::user()->id)->get();
-        return view('manajer.official.index', compact('zona', 'klub', 'official'));
+        return view('manajer.official.index', compact('klub', 'official', 'user'));
     }
 
-    public function klub($id)
+    public function klub()
     {
-        $zona = Zona::where('id', $id)->first();
-        return view('manajer.klub.index', compact('zona'));
+        $user =  DB::table('users')
+            ->join('zonas', 'zonas.id', '=', 'users.zona_id')
+            ->select('zonas.namaKota', 'users.*')->where('users.id', '=', Auth::user()->id)
+            ->get();
+        $klub = DB::table('klubs')->where('user_id', Auth::user()->id)->first();
+        $klubs = DB::table('klubs')
+            ->join('zonas', 'zonas.id', '=', 'klubs.zona_id')
+            ->select('zonas.namaKota', 'klubs.*')->where('klubs.user_id', '=', Auth::user()->id)
+            ->get();
+        return view('manajer.klub.index', compact('user', 'klub', 'klubs'));
     }
-
-    // public function render($kelompokusia)
-    // {
-    //     $pemains = DB::table('pemains')->where('kelompokusia_id', $kelompokusia)->get();
-    //     return view('manajer.pemain.index', [
-    //         'pemains' => $pemains,
-    //         'kelompok_usias' => Kelompok_usia::all(),
-    //         'title' => 'Kelompok Usia Pemain '.$kelompokusia
-    //     ]);
-
-    // }
-
 }

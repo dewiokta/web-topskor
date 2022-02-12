@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="../node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
+    <link href="{!! asset('assets/css/style.css') !!}" rel="stylesheet">
+    <link href="{!! asset('assets/css/componn.css') !!}" rel="stylesheet">
     <style>
         .navbar-bg {
             background-color: #272358;
@@ -45,7 +45,7 @@
                 </form>
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                            <img alt="image" src="{!! asset('assets/img/avatar/avatar-1.png') !!}" class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -73,15 +73,20 @@
                     </div>
                     <br>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="#"><img src="../images/logo-topskor.png" height="60" alt=""></a>
+                        <a href="#"><img src="{!! asset('assets/img/logo-topskor.png') !!}" height="60" alt=""></a>
                     </div>
                     <br><br><br>
+                    @foreach($user as $users)
                     <ul class="sidebar-menu">
-                        <li><a class="nav-link" href="{{ route('klub.zona', $zona->id) }}"><i class="fas fa-football-ball"></i> <span>Klub Sepak Bola</span></a></li>
-                        <li><a class="nav-link" href="{{ route('official.zona', $zona->id) }}"><i class="fas fa-user-friends"></i> <span>Official Team</span></a></li>
-                        <li class=""><a class="nav-link" href="{{ route('pemain.zona', $zona->id) }}"><i class="fas fa-user-alt"></i> <span>Pemain</span></a></li>
+                        <li class=""><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-ruler-vertical"></i> <span> Rules</span></a></li>
+                        @if($users->zona_id == null)
+                        <li class=""><a class="nav-link" href="{{ route('pilih-zona') }}"><i class="fas fa-city"></i> <span>Pilih Zona</span></a></li>
+                        @endif
+                        <li><a class="nav-link" href="{{ route('klub.zona', $users->id) }}"><i class="fas fa-football-ball"></i> <span>Klub Sepak Bola</span></a></li>
+                        <li><a class="nav-link" href="{{ route('official.zona', $users->id) }}"><i class="fas fa-user-friends"></i> <span>Official Team</span></a></li>
+                        <li class=""><a class="nav-link" href="{{ route('pemain.zona', $users->id) }}"><i class="fas fa-user-alt"></i> <span>Pemain</span></a></li>
                     </ul>
-                    </ul>
+                    @endforeach
                 </aside>
             </div>
 

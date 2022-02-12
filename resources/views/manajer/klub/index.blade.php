@@ -1,10 +1,11 @@
-@extends('layouts.manajer')
+@extends('layouts.zona')
 
 @section('content')
 
 <section class="section">
+    @if(empty($klub))
     <div class="section-header">
-        <h1>Tim Anda Akan Masuk Dalam Zona <b style="color: red;">"{{ $zona->namaKota }}"</b></h1>
+        <h1>Masukkan Klub Anda</h1>
     </div>
     <div class="section-body">
         <div class="container py-4">
@@ -14,8 +15,8 @@
                         <div class="card-body">
                             <h6><i class="fa fa-pencil-alt"></i> Isi Data Klub Disini</h6>
                             <br>
-                            <form method="POST" action="{{ url('klub/add', $zona->id) }}" enctype="multipart/form-data">
-                            {{ csrf_field() }}
+                            <form method="POST" action="{{ url('/klub/add') }}/{{ Auth::user()->id }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
 
                                 <div class="form-group row">
                                     <label for="namaKlub" class="col-md-2 col-form-label text-md-right">{{ __('Nama Klub') }}</label>
@@ -34,9 +35,11 @@
                                 <div class="form-group row">
                                     <label class="col-md-2 col-form-label text-md-right">Zona</label>
                                     <div class="input-group mb-2 mr-sm-2 col-sm-6">
+                                        @foreach($user as $users)
                                         <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="zona" id="cars" disabled>
-                                            <option value="zona">{{ $zona->namaKota }}</option>
+                                            <option value="zona">{{ $users->namaKota }}</option>
                                         </select>
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -235,9 +238,109 @@
                         </div>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </div>
+    @endif
 </section>
+
+<div class="container py-6">
+    @foreach($klubs as $klub)
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h6><i class="fa fa-user"></i> Data Klub</h6>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Nama Klub</td>
+                            <td>:</td>
+                            <td>{{ $klub->namaKlub }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Zona</td>
+                            <td>:</td>
+                            <td>{{ $klub->namaKota }}</td>
+                        </tr>
+                        <tr>
+                            <td>Logo Klub</td>
+                            <td>:</td>
+                            <td>
+                            <img src="{{ url('images/logo_klub') }}/{{ $klub->logo_klub }}" width="100" alt="...">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alamat Bersurat</td>
+                            <td>:</td>
+                            <td>{{ $klub->alamat_bersurat }}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat Latihan</td>
+                            <td>:</td>
+                            <td>{{ $klub->alamat_latihan }}</td>
+                        </tr>
+                        <tr>
+                            <td>No. Telp</td>
+                            <td>:</td>
+                            <td>{{ $klub->no_hp }}</td>
+                        </tr>
+                        <tr>
+                            <td>Medsos (URL)</td>
+                            <td>:</td>
+                            <td>{{ $klub->medsos_url }}</td>
+                        </tr>
+                        <tr>
+                            <td>Website (URL)</td>
+                            <td>:</td>
+                            <td>{{ $klub->website }}</td>
+                        </tr>
+                        <tr>
+                            <td>Penanggung Jawab Klub</td>
+                            <td>:</td>
+                            <td>{{ $klub->penanggungjawab_klub }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Siswa</td>
+                            <td>:</td>
+                            <td>{{ $klub->jumlah_siswa }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Pelatih</td>
+                            <td>:</td>
+                            <td>{{ $klub->jumlah_pelatih }}</td>
+                        </tr>
+                        <tr>
+                            <td>Keanggotaan ASKOT/ASKAB</td>
+                            <td>:</td>
+                            <td>{{ $klub->keanggotaan_askot_askab }}</td>
+                        </tr>
+                        <tr>
+                            <td>Akte SSB</td>
+                            <td>:</td>
+                            <td>{{ $klub->akte_sbb }}</td>
+                        </tr>
+                        <tr>
+                            <td>Prestasi</td>
+                            <td>:</td>
+                            <td>{{ $klub->prestasi }}</td>
+                        </tr>
+                        <tr>
+                            <td>Kompetisi Yang Diikuti</td>
+                            <td>:</td>
+                            <td>{{ $klub->kompetisi_yangdiikuti }}</td>
+                        </tr>
+                        <tr>
+                            <td>Partisipasi Di Liga Topskor</td>
+                            <td>:</td>
+                            <td>{{ $klub->partisipasi_diligatopskor }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
 @endsection

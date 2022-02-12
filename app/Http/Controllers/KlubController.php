@@ -22,17 +22,15 @@ class KlubController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-
-        $zona = Zona::where('id', $id)->first();
         $klub = new Klub;
         $user = User::where('id', Auth::user()->id)->first();
-        $klub->zona_id = $zona->id;
+        $klub->zona_id = $user->zona_id;
         $klub->user_id = $user->id;
         $klub->namaKlub = $request->namaKlub;
         $klub->partisipasi_diligatopskor = $request->partisipasi_diligatopskor;
-        $klub->akte_sbb = $request->akte_sbb;
+        $klub->akte_sbb = $request->akte_sbb; 
         $klub->alamat_bersurat = $request->alamat_bersurat;
         $klub->alamat_latihan = $request->alamat_latihan;
         $klub->medsos_url = $request->medsos_url;
@@ -44,7 +42,6 @@ class KlubController extends Controller
         $klub->keanggotaan_askot_askab = $request->keanggotaan_askot_askab;
         $klub->prestasi = $request->prestasi;
         $klub->kompetisi_yangdiikuti = $request->kompetisi_yangdiikuti;
-        $zona_id =  $zona->id;
         $file = $request->file('logo_klub');
         // Mendapatkan Nama File
         $nama_file = $file->getClientOriginalName();
@@ -54,7 +51,7 @@ class KlubController extends Controller
         $file->move($destinationPath, $file->getClientOriginalName());
         $klub->logo_klub = $nama_file;
         $klub->save();
-        return redirect('official/'.$zona_id);
+        return redirect('klub/'. Auth::user()->id);
         
     }
 

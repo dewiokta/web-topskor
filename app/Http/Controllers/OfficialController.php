@@ -34,36 +34,41 @@ class OfficialController extends Controller
         $this->middleware('auth');
     }
     
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $zona = Zona::where('id', $id)->first();
         $official = new Official;
         $klub = Klub::where('user_id', Auth::user()->id)->first();
+        $users =  DB::table('users')
+        ->join('zonas', 'zonas.id', '=', 'users.zona_id')
+        ->select('zonas.namaKota', 'users.*')->where('users.id', '=', Auth::user()->id)
+        ->first();
         $user = User::where('id', Auth::user()->id)->first();
-        $official->zona_id = $zona->id;
+        $official->zona_id = $users->zona_id;
         $official->klub_id = $klub->id;
         $official->user_id = $user->id;
-        $official->zona = $zona->namaKota;
+        $official->zona = $users->namaKota;
         $official->klub = $klub->namaKlub;
         $official->namaOfficial = $request->namaOfficial;
         $official->jabatan = $request->jabatan;
         $official->ttl = $request->ttl;
         $official->email = $request->email;
-        $zona_id =  $zona->id;
         $official->no_hp = $request->no_hp;
         $official->lisensi = implode(", ", $request->lisensi);
         $official->medsos_url = $request->medsos_url;
         $official->save();
 
-        return redirect('official/' . $zona_id);
+        return redirect('official/' . Auth::user()->id);
     }
 
     public function detail($id, $official_id)
     {
         $official = Official::where('id', $official_id)->get();
-        $zona = Zona::where('id', $id)->first();
+        $user =  DB::table('users')
+            ->join('zonas', 'zonas.id', '=', 'users.zona_id')
+            ->select('zonas.namaKota', 'users.*')->where('users.id', '=', Auth::user()->id)
+            ->get();
         $klub = DB::table('klubs')->where('user_id', Auth::user()->id)->get();
-        return view('manajer.official.detail', compact('zona', 'klub', 'official'));
+        return view('manajer.official.detail', compact('klub', 'official', 'user'));
     }
 
     public function edit(Request $request, $id)
@@ -78,14 +83,13 @@ class OfficialController extends Controller
         $official->medsos_url = $request->medsos_url;
         $official->update();
 
-        return redirect('official-detail/' . $official->id);
+        return redirect('official-detail/' . Auth::user()->id . '/' .$official->id);
     }
 
     public function delete($id)
     {
         $official = Official::findOrFail($id);
-        $zona_id =  $official->zona_id;
         $official->delete();
-        return redirect('official/' . $zona_id);
+        return redirect('official/' . Auth::user()->id);
     }
 }

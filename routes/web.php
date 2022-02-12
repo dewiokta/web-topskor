@@ -39,14 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
     Route::get('/pilih-zona', 'App\Http\Controllers\DashboardController@zona')->name('pilih-zona');
 
-    // pemain
-    Route::get('/pemain/{id}', [App\Http\Controllers\ZonaController::class, 'pemain'])->name('pemain.zona');
-    Route::match(['get', 'post'], '/pemain/add/{id}',  [App\Http\Controllers\PemainController::class, 'store'])->name('pemain.create');
-    Route::get('/pemain-detail/{id}/{pemain_id}', [App\Http\Controllers\PemainController::class, 'detail'])->name('pemain.detail');
-    Route::match(['get', 'post'], '/pemain-detail/{id}', 'App\Http\Controllers\PemainController@edit')->name('pemain.update');
-    Route::delete('/pemain/{id}', 'App\Http\Controllers\PemainController@delete');
-    Route::match(['get', 'post'], '/pemain/kelusia/{id}/{pemain_id}', 'App\Http\Controllers\PemainController@tambahusia')->name('pemain.usia');
-    Route::get('/pemain/kelompok-usia/{id}', 'App\Http\Controllers\PemainController@kelusia')->name('kelusia');
+    //pilih zona
+    Route::match(['get', 'post'],'/pilih-zona/{id}', 'App\Http\Controllers\DashboardController@pilih')->name('zona');
 
     // klub
     Route::get('/klub/{id}', [App\Http\Controllers\ZonaController::class, 'klub'])->name('klub.zona');
@@ -58,6 +52,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/official-detail/{id}/{official_id}', [App\Http\Controllers\OfficialController::class, 'detail'])->name('official.detail');
     Route::match(['get', 'post'], '/official-detail/{id}', 'App\Http\Controllers\OfficialController@edit')->name('official.update');
     Route::delete('/official/{id}', 'App\Http\Controllers\OfficialController@delete');
+
+     // pemain
+     Route::get('/pemain/{id}', [App\Http\Controllers\ZonaController::class, 'pemain'])->name('pemain.zona');
+     Route::match(['get', 'post'], '/pemain/add/{id}',  [App\Http\Controllers\PemainController::class, 'store'])->name('pemain.create');
+     Route::get('/pemain-detail/{id}/{pemain_id}', [App\Http\Controllers\PemainController::class, 'detail'])->name('pemain.detail');
+     Route::match(['get', 'post'], '/pemain-detail/{id}', 'App\Http\Controllers\PemainController@edit')->name('pemain.update');
+     Route::delete('/pemain/{id}', 'App\Http\Controllers\PemainController@delete');
+     Route::match(['get', 'post'], '/pemain/kelusia/{id}/{pemain_id}', 'App\Http\Controllers\PemainController@tambahusia')->name('pemain.usia');
+     Route::get('/pemain/kelompok-usia/{id}', 'App\Http\Controllers\PemainController@kelusia')->name('kelusia');
 });
 
 

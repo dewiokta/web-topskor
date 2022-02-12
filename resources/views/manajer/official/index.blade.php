@@ -1,4 +1,4 @@
-@extends('layouts.official')
+@extends('layouts.zona')
 @section('content')
 
 <style media="screen">
@@ -12,7 +12,7 @@
 </style>
 <section class="section">
     <div class="section-header">
-        <h1>Tim Anda Akan Masuk Dalam Zona <b style="color: red;">"{{ $zona->namaKota }}"</b></h1>
+        <h1>Data Official Tim</b></h1>
     </div>
     <div class="input-group mb-3">
         <form action="#" method="GET">
@@ -72,9 +72,9 @@
                                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data official ini?');">Hapus</button>
                                                     </form>
                                                 </ul>
-                                                
+
                                                 <ul class="left">
-                                                    <a class="btn btn-info btn-sm" href="{{ route('official.detail', [$zona->id, $officials->id]) }}">Detail</a>
+                                                    <a class="btn btn-info btn-sm" href="{{ route('official.detail', [Auth::user()->id, $officials->id]) }}">Detail</a>
                                                 </ul>
                                             </div>
                                         </td>
@@ -100,7 +100,7 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="card">
-                    <form class="needs-validation form-inline" method="POST" action="{{ url('official/add', $zona->id) }}" enctype="multipart/form-data">
+                    <form class="needs-validation form-inline" method="POST" action="{{ url('/official/add') }}/{{ Auth::user()->id }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class=" card-body">
                             <div class="form-group row">
@@ -174,9 +174,11 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Zona</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    @foreach($user as $users)
                                     <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="zona" id="cars" disabled>
-                                        <option value="zona">{{ $zona->namaKota }}</option>
+                                        <option value="zona">{{ $users->namaKota }}</option>
                                     </select>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="form-group row">

@@ -1,4 +1,4 @@
-@extends('layouts.pemain')
+@extends('layouts.zona')
 @section('content')
 <style media="screen">
     .left {
@@ -11,7 +11,7 @@
 </style>
 <section class="section">
     <div class="section-header">
-        <h1>Tim Anda Akan Masuk Dalam Zona <b style="color: red;">"{{ $zona->namaKota }}"</b></h1>
+        <h1>Data Pemain</h1>
     </div>
 
     <div class="section-body">
@@ -24,7 +24,7 @@
                             <button style="float: right; font-weight: 600; background: 	#8B0000; color: white;" class="btn " type="button" data-toggle="modal" data-target="#CreateArticleModal">
                                 Buat Baru
                             </button>
-                            <a class="btn btn-warning btn-sm" href="{{ route('kelusia', $zona->id) }}">Daftar Kelompok Usia</a>
+                            <a class="btn btn-warning btn-sm" href="{{ route('kelusia', Auth::user()->id) }}">Daftar Kelompok Usia</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -53,7 +53,7 @@
                                         <td>{{ $pemains->klub }}</td>
                                         <td style="color: #8B0000;">{{ $pemains->status }}</td>
                                         <td>
-                                            <form class="needs-validation form-inline" method="POST" action="{{ url('/pemain/kelusia') }}/{{ $zona->id }}/{{ $pemains->id }}">
+                                            <form class="needs-validation form-inline" method="POST" action="{{ url('/pemain/kelusia') }}/{{ Auth::user()->id}}/{{ $pemains->id }}">
                                                 {{ csrf_field() }}
                                                 <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="usia" id="cars">
 
@@ -75,7 +75,7 @@
                                                     </form>
                                                 </ul>
                                                 <ul class="left">
-                                                    <a class="btn btn-info btn-sm" href="{{ route('pemain.detail', [$zona->id, $pemains->id])}}">Detail</a>
+                                                    <a class="btn btn-info btn-sm" href="{{ route('pemain.detail', [Auth::user()->id, $pemains->id])}}">Detail</a>
                                                 </ul>
                                             </div>
                                         </td>
@@ -101,7 +101,7 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="card">
-                    <form class="needs-validation form-inline" method="POST" action="{{ url('pemain/add', $zona->id) }}" enctype="multipart/form-data">
+                    <form class="needs-validation form-inline" method="POST" action="{{ url('pemain/add', Auth::user()->id) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group row">
@@ -161,9 +161,11 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Zona</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    @foreach($user as $users)
                                     <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="zona" id="cars" disabled>
-                                        <option value="zona">{{ $zona->namaKota }}</option>
+                                        <option value="zona">{{ $users->namaKota }}</option>
                                     </select>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="form-group row">

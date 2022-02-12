@@ -1,11 +1,11 @@
-@extends('layouts.pemain')
+@extends('layouts.zona')
 @section('content')
 <div class="section-body">
     <div class="row">
         <div class="col-md-12 mt-2">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item" aria-current="page"> <a href="{{ route('pemain.zona', $zona->id) }}">Daftar Pemain</a> </li>
+                    <li class="breadcrumb-item" aria-current="page"> <a href="{{ route('pemain.zona', Auth::user()->id) }}">Daftar Pemain</a> </li>
                     <li class="breadcrumb-item active" aria-current="page"> Detail</li>
                 </ol>
             </nav>
