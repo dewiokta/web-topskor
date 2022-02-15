@@ -6,6 +6,8 @@ use App\Models\Klub;
 use App\Models\Zona;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use Yajra\DataTables\Services\DataTable;
 
 class KlubController extends Controller
@@ -58,5 +60,45 @@ class KlubController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function adminklub(){
+        $klub =  Klub::all();
+        $zonas = Zona::all();
+        return view('admin-zona.manajemen.klub.index', compact('klub', 'zonas'));
+    }
+
+    public function detailadminklub($id){
+        $klubs =  Klub::where('id', $id)->get();
+        return view('admin-zona.manajemen.klub.detail', compact('klubs'));
+    }
+
+    public function render($zona)
+    {
+        $klub = DB::table('klubs')->where('zona_id', $zona)->get();
+        $zonas = Zona::all();
+        return view('admin-zona.manajemen.klub.index', compact('klub', 'zonas'));
+       
+    }
+
+    public function official($id)
+    {
+        $official = DB::table('officials')->where('klub_id', $id)->get();
+        $zonas = Zona::all();
+        return view('admin-zona.manajemen.official.index', compact('official', 'zonas'));
+       
+    }
+
+    public function pemain($id)
+    {
+        $pemain = DB::table('pemains')->where('klub_id', $id)->get();
+        $pemainn = DB::table('pemains')->where('klub_id', $id)->first();
+        $zonas = Zona::all();
+        $kelompok_usia =  DB::table('pemain_has_kelompok_usias')
+        ->join('kelompok_usias', 'pemain_has_kelompok_usias.kelusia_id', '=', 'kelompok_usias.id')
+        ->select('kelompok_usias.usia')->where('pemain_has_kelompok_usias.pemain_id', '=', $pemainn->id)
+        ->get();
+        return view('admin-zona.manajemen.pemain.index', compact('pemain', 'zonas', 'kelompok_usia'));
+       
     }
 }

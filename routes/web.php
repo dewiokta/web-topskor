@@ -24,15 +24,6 @@ Route::get('/', function () {
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
 Route::get('/informasi', [App\Http\Controllers\InformasiUmumController::class, 'index'])->name('informasi');
 
-//usia
-Route::get('/usia', [App\Http\Controllers\UsiaController::class, 'index'])->name('usia');
-
-//zona
-Route::get('/zona', [App\Http\Controllers\ZonaController::class, 'index'])->name('zona');
-
-//manajer
-Route::get('/manajer', [App\Http\Controllers\ManajerController::class, 'index'])->name('manajer');
-
 //auth route for both 
 Route::group(['middleware' => ['auth']], function () {
 
@@ -61,6 +52,13 @@ Route::group(['middleware' => ['auth']], function () {
      Route::delete('/pemain/{id}', 'App\Http\Controllers\PemainController@delete');
      Route::match(['get', 'post'], '/pemain/kelusia/{id}/{pemain_id}', 'App\Http\Controllers\PemainController@tambahusia')->name('pemain.usia');
      Route::get('/pemain/kelompok-usia/{id}', 'App\Http\Controllers\PemainController@kelusia')->name('kelusia');
+
+    //admin klub
+    Route::get('/admin/klub', 'App\Http\Controllers\KlubController@adminklub')->name('admin.klub');
+    Route::get('/klubadmin-detail/{id}', [App\Http\Controllers\KlubController::class, 'detailadminklub'])->name('adminklub.detail');
+    Route::get('/admin/klub/{zona}', 'App\Http\Controllers\KlubController@render')->name('klubs.zona');  
+    Route::get('/admin/klub/official/{id}', 'App\Http\Controllers\KlubController@official')->name('klubs.official');
+    Route::get('/admin/klub/pemain/{id}', 'App\Http\Controllers\KlubController@pemain')->name('klubs.pemain');    
 });
 
 

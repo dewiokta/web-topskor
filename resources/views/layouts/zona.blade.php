@@ -76,6 +76,7 @@
                         <a href="#"><img src="{!! asset('assets/img/logo-topskor.png') !!}" height="60" alt=""></a>
                     </div>
                     <br><br><br>
+                    @if (Auth::user()->hasRole('manajertim'))
                     @foreach($user as $users)
                     <ul class="sidebar-menu">
                         <li class=""><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-ruler-vertical"></i> <span> Rules</span></a></li>
@@ -87,6 +88,26 @@
                         <li class=""><a class="nav-link" href="{{ route('pemain.zona', $users->id) }}"><i class="fas fa-user-alt"></i> <span>Pemain</span></a></li>
                     </ul>
                     @endforeach
+                    @endif
+                    @if (Auth::user()->hasRole('adminpusat'))
+                    <ul class="sidebar-menu">
+                    <li class="nav-item ">
+                            <a href="{{ route('dashboard') }}" class="nav-link" data-toggle="dropdown"><i class="fas fa-calculator"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li class="menu-header">Manajemen</li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manajemen</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="layout-default.html">Zona</a></li>
+                                <li><a class="nav-link" href="layout-transparent.html">Kelompok Usia</a></li>
+                                <li><a class="nav-link" href="layout-top-navigation.html">Zona - Kelompok Usia</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="{{ route('admin.klub') }}" class="nav-link"><i class="	fas fa-database"></i> <span>Data</span></a>
+                        </li>
+                    </ul>
+                    @endif
                 </aside>
             </div>
 

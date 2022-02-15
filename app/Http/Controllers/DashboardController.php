@@ -21,7 +21,9 @@ class DashboardController extends Controller
      public function index()
      {
           if (Auth::user()->hasRole('adminpusat')) {
-               return view('adminpusat_dash');
+               $zonas = Zona::all();
+               $user = User::where('id', Auth::user()->id)->get();
+               return view('admin-zona.index', compact('zonas', 'user'));
           } elseif (Auth::user()->hasRole('adminzona')) {
                return view('adminzona_dash');
           } elseif (Auth::user()->hasRole('manajertim')) {
