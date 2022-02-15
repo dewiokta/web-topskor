@@ -80,4 +80,12 @@ class ZonaController extends Controller
             ->get();
         return view('manajer.klub.index', compact('user', 'klub', 'klubs'));
     }
+
+    public function admin()
+    {
+        $zonas = Zona::all();
+        return view('admin-zona.zona.index', compact('zonas'));
+       
+    }
+
 }

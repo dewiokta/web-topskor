@@ -58,7 +58,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/klubadmin-detail/{id}', [App\Http\Controllers\KlubController::class, 'detailadminklub'])->name('adminklub.detail');
     Route::get('/admin/klub/{zona}', 'App\Http\Controllers\KlubController@render')->name('klubs.zona');  
     Route::get('/admin/klub/official/{id}', 'App\Http\Controllers\KlubController@official')->name('klubs.official');
-    Route::get('/admin/klub/pemain/{id}', 'App\Http\Controllers\KlubController@pemain')->name('klubs.pemain');    
+    Route::get('/admin/klub/pemain/{id}', 'App\Http\Controllers\KlubController@pemain')->name('klubs.pemain');
+    
+    //manajemen
+    Route::get('/admin/zona', 'App\Http\Controllers\ZonaController@admin')->name('admin.zona');
+    Route::get('/admin/kelompok-usia', 'App\Http\Controllers\UsiaController@admin')->name('admin.kelusia');
+    Route::get('/admin/zona-kelompok-usia', 'App\Http\Controllers\UsiaController@zonakelusia')->name('admin.zonakelusia');
 });
 
 

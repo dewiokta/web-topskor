@@ -22,16 +22,18 @@
                                         <th class="text-center">
                                             No.
                                         </th>
-                                        <th>Usia</th>
+                                        <th>Zona</th>
+                                        <th>Kelompok Usia</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    @foreach ($kelusia as $kelusias)
+                                    @foreach ($zonakel as $zonakels)
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
-                                        <td>{{ $kelusias->usia }}</td>
+                                        <td>{{ $zonakels->zona->namaKota }}</td>
+                                        <td>{{ $zonakels->kelompok_usia->usia }}</td>
                                         <td>
                                             <a class="btn btn-danger btn-sm" href="#">Hapus</a>
                                             <a class="btn btn-primary btn-sm" href="#">Edit</a>

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.zona')
 @section('content')
 <section class="section">
     <div class="section-header">
@@ -20,14 +20,24 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">
-                                            #
+                                            No.
                                         </th>
-                                        <th>Zona</th>
+                                        <th>Nama Kota</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    <?php $no = 1; ?>
+                                    @foreach ($zonas as $zona)
+                                    <tr>
+                                        <td class="text-center">{{ $no++ }}</td>
+                                        <td>{{ $zona->namaKota }}</td>
+                                        <td>
+                                            <a class="btn btn-danger btn-sm" href="#">Hapus</a>
+                                            <a class="btn btn-primary btn-sm" href="#">Edit</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -60,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer text-right">                    
+                        <div class="card-footer text-right">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button class="btn btn-primary">Add</button>
                         </div>
