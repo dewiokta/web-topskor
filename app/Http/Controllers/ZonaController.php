@@ -88,4 +88,26 @@ class ZonaController extends Controller
        
     }
 
+    public function postadmin(Request $request)
+    {
+        $zona = new Zona();
+        $zona->namaKota = $request->namaKota;
+        $zona->save();
+        return redirect('admin/zona');
+    }
+
+    public function deleteadmin($id)
+    {
+        $zonas = Zona::findOrFail($id);
+        $zonas->delete();
+        return redirect('admin/zona');
+    }
+
+    public function editadmin(Request $request, $id)
+    {
+        $zona = Zona::findOrFail($id);
+        $zona->namaKota = $request->namaKota;
+        $zona->update();
+        return redirect('admin/zona');
+    }
 }

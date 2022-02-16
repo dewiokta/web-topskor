@@ -2,17 +2,17 @@
 
 @section('content')
 <div class="container py-6">
+    @foreach ($official as $officials)
     <div class="row">
         <<div class="col-md-12 mt-2">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page"> <a href="{{ route('admin.klub') }}">Data Klub</a> </li>
-                    <li class="breadcrumb-item" aria-current="page"> Data Official</li>
+                    <li class="breadcrumb-item" aria-current="page"> <a href="{{ route('klubs.official', $officials->klub_id) }}">Data Official</a></li>
                     <li class="breadcrumb-item active" aria-current="page"> Detail</li>
                 </ol>
             </nav>
     </div>
-    @foreach ($official as $officials)
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
@@ -71,6 +71,5 @@
         </div>
     </div>
     @endforeach
-</div>
 </div>
 @endsection

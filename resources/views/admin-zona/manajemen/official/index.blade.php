@@ -46,7 +46,7 @@
                                         <td>{{ $officials->ttl }}</td>
                                         <td style="color: #8B0000;">{{ $officials->status }}</td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="#">Detail</a>
+                                            <a class="btn btn-info btn-sm" href="{{ route('klubs.officialdetail', $officials->id) }}">Detail</a>
                                             <a class="btn btn-primary btn-sm" href="#">Update Status</a>
                                         </td>
                                     </tr>

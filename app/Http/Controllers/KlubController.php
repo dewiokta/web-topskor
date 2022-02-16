@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Models\Klub;
+use App\Models\Official;
+use App\Models\Pemain;
 use App\Models\Zona;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -96,9 +98,25 @@ class KlubController extends Controller
         $zonas = Zona::all();
         $kelompok_usia =  DB::table('pemain_has_kelompok_usias')
         ->join('kelompok_usias', 'pemain_has_kelompok_usias.kelusia_id', '=', 'kelompok_usias.id')
-        ->select('kelompok_usias.usia')->where('pemain_has_kelompok_usias.pemain_id', '=', $pemainn->id)
+        ->select('kelompok_usias.usia')->where('pemain_has_kelompok_usias.pemain_id', '=', $id)
         ->get();
         return view('admin-zona.manajemen.pemain.index', compact('pemain', 'zonas', 'kelompok_usia'));
        
+    }
+
+    public function officialdetail($id)
+    {
+        $official = Official::where('id', $id)->get();
+        return view('admin-zona.manajemen.official.detail', compact('official'));
+    }
+
+    public function pemaindetail($id)
+    {
+        $pemain = Pemain::where('id', $id)->get();
+        $kelompok_usia =  DB::table('pemain_has_kelompok_usias')
+        ->join('kelompok_usias', 'pemain_has_kelompok_usias.kelusia_id', '=', 'kelompok_usias.id')
+        ->select('kelompok_usias.usia')->where('pemain_has_kelompok_usias.pemain_id', '=', $id)
+        ->get();
+        return view('admin-zona.manajemen.pemain.detail', compact('pemain', 'kelompok_usia'));
     }
 }

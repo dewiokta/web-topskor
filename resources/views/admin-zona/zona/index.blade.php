@@ -33,8 +33,21 @@
                                         <td class="text-center">{{ $no++ }}</td>
                                         <td>{{ $zona->namaKota }}</td>
                                         <td>
-                                            <a class="btn btn-danger btn-sm" href="#">Hapus</a>
-                                            <a class="btn btn-primary btn-sm" href="#">Edit</a>
+                                            <form action="{{ url('admin/zona/delete') }}/{{ $zona->id }}" method="post">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data zona ini?');">Hapus</button>
+                                            </form>
+                                            <form class="needs-validation form-inline" method="POST" action="{{ url('/admin/zona/edit') }}/{{ $zona->id }}">
+                                                {{ csrf_field() }}
+                                                <div class="input-group">
+                                                    <input type="text" name="namaKota" value="{{$zona->namaKota}}" class="form-control" required="" placeholder="">
+                                                    <div class="invalid-feedback">
+                                                        Lokasi Usia Harus diisi
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary"> Edit</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -60,11 +73,12 @@
             </div>
             <div class="card">
                 <div class="modal-body">
-                    <form class="needs-validation" novalidate="">
+                    <form class="needs-validation form-inline" method="POST" action="{{ url('admin/zona/post') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label class="col-form-label">Lokasi</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" required="" placeholder="">
+                                <input type="text" name="namaKota" class="form-control" required="" placeholder="">
                                 <div class="invalid-feedback">
                                     Lokasi Usia Harus diisi
                                 </div>
@@ -79,4 +93,5 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
