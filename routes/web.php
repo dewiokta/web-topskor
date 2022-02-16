@@ -68,6 +68,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/admin/zona/delete/{id}', 'App\Http\Controllers\ZonaController@deleteadmin');
     Route::post('/admin/zona/edit/{id}', 'App\Http\Controllers\ZonaController@editadmin')->name('admin.zonaedit');
     Route::get('/admin/kelompok-usia', 'App\Http\Controllers\UsiaController@admin')->name('admin.kelusia');
+    Route::post('/admin/kelusia/post', 'App\Http\Controllers\UsiaController@postadmin')->name('admin.kelusiapost');
+    Route::delete('/admin/kelusia/delete/{id}', 'App\Http\Controllers\UsiaController@deleteadmin');
+    Route::post('/admin/kelusia/edit/{id}', 'App\Http\Controllers\UsiaController@editadmin')->name('admin.kelusiaedit');
     Route::get('/admin/zona-kelompok-usia', 'App\Http\Controllers\UsiaController@zonakelusia')->name('admin.zonakelusia');
 });
 

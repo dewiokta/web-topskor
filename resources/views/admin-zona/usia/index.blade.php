@@ -33,8 +33,21 @@
                                         <td class="text-center">{{ $no++ }}</td>
                                         <td>{{ $kelusias->usia }}</td>
                                         <td>
-                                            <a class="btn btn-danger btn-sm" href="#">Hapus</a>
-                                            <a class="btn btn-primary btn-sm" href="#">Edit</a>
+                                            <form action="{{ url('admin/kelusia/delete') }}/{{ $kelusias->id }}" method="post">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data usia ini?');">Hapus</button>
+                                            </form>
+                                            <form class="needs-validation form-inline" method="POST" action="{{ url('/admin/kelusia/edit') }}/{{ $kelusias->id }}">
+                                                {{ csrf_field() }}
+                                                <div class="input-group">
+                                                    <input type="text" name="usia" value="{{$kelusias->usia}}" class="form-control" required="" placeholder="">
+                                                    <div class="invalid-feedback">
+                                                        Usia Harus diisi
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary"> Edit</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -60,11 +73,12 @@
             </div>
             <div class="card">
                 <div class="modal-body">
-                    <form class="needs-validation" novalidate="">
+                    <form class="needs-validation form-inline" method="POST" action="{{ url('admin/kelusia/post') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label class="col-form-label">Kelompok Usia</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" required="" placeholder="">
+                                <input type="text" class="form-control" name="usia" required="" placeholder="">
                                 <div class="invalid-feedback">
                                     Kelompok Usia Harus diisi
                                 </div>
@@ -72,7 +86,7 @@
                         </div>
                         <div class="card-footer text-right">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button class="btn btn-primary">Add</button>
+                            <button class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
                 </div>
