@@ -86,7 +86,7 @@
                         </div>
                         <div class="card-footer text-right">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button class="btn btn-primary">Add</button>
+                            <button class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
                 </div>

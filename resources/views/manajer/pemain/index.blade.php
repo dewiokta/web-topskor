@@ -56,7 +56,6 @@
                                             <form class="needs-validation form-inline" method="POST" action="{{ url('/pemain/kelusia') }}/{{ Auth::user()->id}}/{{ $pemains->id }}">
                                                 {{ csrf_field() }}
                                                 <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="usia" id="cars">
-
                                                     <option value="Pilih Usiaa">Pilih Usia</option>
                                                     @foreach($zonakel as $zonakels)
                                                     <option value="{{ $zonakels->kelompok_usia->id }}">{{ $zonakels->kelompok_usia->usia }}</option>

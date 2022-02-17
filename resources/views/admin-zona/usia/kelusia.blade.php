@@ -35,8 +35,33 @@
                                         <td>{{ $zonakels->zona->namaKota }}</td>
                                         <td>{{ $zonakels->kelompok_usia->usia }}</td>
                                         <td>
-                                            <a class="btn btn-danger btn-sm" href="#">Hapus</a>
-                                            <a class="btn btn-primary btn-sm" href="#">Edit</a>
+                                            <form action="{{ url('admin/zona-kelompok-usia/delete') }}/{{ $zonakels->id }}" method="post">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?');">Hapus</button>
+                                            </form>
+                                            <form class="needs-validation form-inline" method="POST" action="{{ url('/admin/zona-kelompok-usia/edit') }}/{{ $zonakels->id }}">
+                                                {{ csrf_field() }}
+                                                <div class="form-group">
+                                                    <label class="col-form-label">Zona</label>
+                                                    <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="zona" id="cars">
+
+                                                        <option value="Pilih Zona">Pilih Zona</option>
+                                                        @foreach($zona as $zonas)
+                                                        <option value="{{ $zonas->id }}">{{ $zonas->namaKota }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <label class="col-form-label">Kelompok Usia</label>
+                                                    <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="usia" id="cars">
+
+                                                        <option value="Pilih Usia">Pilih Usia</option>
+                                                        @foreach($kelusia as $kelusias)
+                                                        <option value="{{ $kelusias->id }}">{{ $kelusias->usia }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <button type="submit" class="btn btn-primary"> Edit</button>
+                                                </div>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -62,19 +87,29 @@
             </div>
             <div class="card">
                 <div class="modal-body">
-                    <form class="needs-validation" novalidate="">
+                    <form class="needs-validation form-inline" method="POST" action="{{ url('admin/zona-kelompok-usia/post') }}" enctype="multipart/form-data" novalidate="">
+                        {{ csrf_field() }}
                         <div class="form-group">
+                            <label class="col-form-label">Zona</label>
+                            <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="zona" id="cars">
+
+                                <option value="Pilih Zona">Pilih Zona</option>
+                                @foreach($zona as $zonas)
+                                <option value="{{ $zonas->id }}">{{ $zonas->namaKota }}</option>
+                                @endforeach
+                            </select>
                             <label class="col-form-label">Kelompok Usia</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" required="" placeholder="">
-                                <div class="invalid-feedback">
-                                    Kelompok Usia Harus diisi
-                                </div>
-                            </div>
+                            <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="usia" id="cars">
+
+                                <option value="Pilih Usia">Pilih Usia</option>
+                                @foreach($kelusia as $kelusias)
+                                <option value="{{ $kelusias->id }}">{{ $kelusias->usia }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="card-footer text-right">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button class="btn btn-primary">Add</button>
+                            <button class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
                 </div>
