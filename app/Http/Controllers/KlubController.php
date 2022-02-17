@@ -119,4 +119,20 @@ class KlubController extends Controller
         ->get();
         return view('admin-zona.manajemen.pemain.detail', compact('pemain', 'kelompok_usia'));
     }
+
+    public function officialedit(Request $request, $id)
+    {
+        $official = Official::where('id', $id)->first();
+        $official->status = $request->status;
+        $official->update();
+        return redirect('/admin/klub/official/' . $official->klub_id);
+    }
+
+    public function pemainedit(Request $request, $id)
+    {
+        $pemain = Pemain::where('id', $id)->first();
+        $pemain->status = $request->status;
+        $pemain->update();
+        return redirect('/admin/klub/pemain/' . $pemain->klub_id);
+    }
 }

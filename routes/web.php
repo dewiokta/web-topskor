@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/klub/official/detail/{id}', 'App\Http\Controllers\KlubController@officialdetail')->name('klubs.officialdetail');
     Route::get('/admin/klub/pemain/{id}', 'App\Http\Controllers\KlubController@pemain')->name('klubs.pemain');
     Route::get('/admin/klub/pemain/detail/{id}', 'App\Http\Controllers\KlubController@pemaindetail')->name('klubs.pemaindetail');
+    Route::match(['get', 'post'], '/admin/klub/official/edit/{id}', 'App\Http\Controllers\KlubController@officialedit')->name('klubs.officialedit');
+    Route::match(['get', 'post'], '/admin/klub/pemain/edit/{id}', 'App\Http\Controllers\KlubController@pemainedit')->name('klubs.pemainedit');
     
     //manajemen
     Route::get('/admin/zona', 'App\Http\Controllers\ZonaController@admin')->name('admin.zona');

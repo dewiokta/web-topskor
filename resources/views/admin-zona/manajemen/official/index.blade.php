@@ -47,7 +47,17 @@
                                         <td style="color: #8B0000;">{{ $officials->status }}</td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="{{ route('klubs.officialdetail', $officials->id) }}">Detail</a>
-                                            <a class="btn btn-primary btn-sm" href="#">Update Status</a>
+                                            <form class="needs-validation form-inline" method="POST" action="{{ url('admin/klub/official/edit') }}/{{ $officials->id }}">
+                                                {{ csrf_field() }}
+                                                <div class="form-group">
+                                                    <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="status">
+                                                        <option value="">Pilih status</option>
+                                                        <option value="Ditolak">Ditolak</option>
+                                                        <option value="Diterima">Diterima</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary"> Update Status</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
