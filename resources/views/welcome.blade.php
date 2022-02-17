@@ -21,36 +21,31 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
-    <style>
-        .navbar-nav{
-            margin-left: auto;
-        }
-    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container" style="margin-top: 15px;">
+        <div class="container" style="margin-top: 0px;">
             <a class="navbar-brand" href="/">
-                <img src="{{ url('images/logo.png') }}" height="72" width="253">
+                <img src="{{ url('images/logo.png') }}" height="70" width="253" class="logo">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" id="menulist">
                     <li class="nav-item">
                         <a href="/">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a  href="/about">Tentang Kami</a>
+                        <a href="/about">Tentang Kami</a>
                     </li>
                     <li class="nav-item">
-                        <a  href="/informasi">Informasi Umum</a>
+                        <a href="/informasi">Informasi Umum</a>
                     </li>
                 </ul>
+            </div>
+            <div class="burger" onclick="toggleburger()">
+                <i class='fas fa-bars' style='font-size:24px'></i>
             </div>
         </div>
     </nav>
@@ -76,6 +71,8 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/style.js') }}"></script>
 </body>
+
 
 </html>

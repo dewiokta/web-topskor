@@ -87,8 +87,8 @@
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
                     <span class="login100-form-logo">
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="{{ url('images/logo_title.png') }}" height="156" width="288">
+                        <a class="navbar-brand" id="logo-login" href="{{ url('/') }}">
+                            <img src="{{ url('images/logo_title.png') }}">
                         </a>
                     </span>
 

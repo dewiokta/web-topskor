@@ -1,3 +1,149 @@
+
+@media only screen and (max-width:1012px ){
+  
+  .wrap-login100 {
+    position: absolute;
+    width: 450px;
+    height: 470px;
+    background: rgba(255, 255, 255, 0.48);
+    border-radius: 37px;
+    left: 20%;
+    right: 20%;
+    margin-top: 100;
+}
+  
+  .wrap-input100 {
+      position: relative;
+      width: 350px;
+      height: 57px;
+      background: #F2F2F2;
+      border-radius: 20px;
+      margin-left: 35px;
+      margin-right: 35px;
+      margin-top: -15px;
+  }
+  .login100-form-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 178px;
+    height: 156px;
+    Top: -70;
+    Left: 32%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+  }
+
+@media only screen and (max-width:768px ){
+
+  nav{
+    width: 100%;
+  }
+  
+  .navbar-expand-md .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+}
+.navbar-expand-md .navbar-nav {
+  flex-direction: row;
+}
+  nav ul{
+    width: 100%;
+    background-color: lightgrey;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    z-index: 2;
+    justify-content: end;
+    display: block;
+  }
+
+  .burger{
+    display: block!important;
+  }
+ 
+    .site-hero h1 {
+      font-size: 70px;
+    }
+ 
+  nav ul li{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  nav ul li a:hover{
+    background-color: #0A2941;
+    width: auto;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  #menulist{
+    overflow: hidden;
+    transition: 1s;
+  }
+.portfolio-area .filters ul li {
+    padding: 6px 6px;
+  }
+
+  .container-login100{
+    flex-basis: 100%;
+    margin-bottom: 50px;
+
+  }
+
+  .container h1{
+    font-size: 35px;
+  }
+
+  .container h5{
+    font-size: 15px;
+  }
+  
+  .title-carousel{
+    font-size: 20px;
+  }
+
+  .capt-carousel{
+    font-size: 12px;
+  }
+
+  .wrap-login100{
+    left: 10%;
+    margin-top: 100;
+  }
+
+}
+
+@media only screen and (max-width:576px ){
+  
+.wrap-input100 {
+    position: relative;
+    width: 300px;
+    height: 57px;
+    background: #F2F2F2;
+    border-radius: 20px;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: -15px;
+}
+.login100-form-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 178px;
+  height: 156px;
+  Top: -130px;
+  Left: 28%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+}
+
+
 .p1-gradient-bg,
 .thumb .overlay-bg {
   background: -moz-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%);
@@ -33,18 +179,13 @@ nav{
   width: 100%;
   height: 80px;
   line-height: 50px;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+
 }
 
-nav ul{
-  float: right;
-  margin: 0;
-  margin-right: 2.9rem;
-}
 
-nav ul li{
-  list-style-type: none;
-  display: inline-block;
-}
 
 nav ul li a{
   text-decoration: none;
@@ -211,11 +352,7 @@ a:active {
   color: rgba(255, 255, 255, 0.5);
 }
 
-@media (min-width: 768px) {
-  .site-hero h1 {
-    font-size: 70px;
-  }
-}
+
 .item1.header {
 	background-repeat:no-repeat;
 	background-position:0% top;
@@ -528,11 +665,7 @@ a:active {
   font-weight: 500;
 }
 
-@media (max-width: 736px) {
-  .portfolio-area .filters ul li {
-    padding: 6px 6px;
-  }
-}
+
 
 .portfolio-area .filters ul li:after {
   content: "";
@@ -1210,3 +1343,29 @@ img {
 .shopsection .productbox2 {
 	margin-bottom:30px;
 }
+
+
+.burger{
+  cursor: pointer;
+  display: none;
+}
+
+.navbar-nav{
+  margin-left: auto;
+  max-height: 130px;
+}
+
+.burger div{
+  width: 25px;
+  height: 5px;
+  background-color: rgb(226, 226, 226);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width:1024px) {
+  nav{
+    width: 100%;
+  }
+}
+
