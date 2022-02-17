@@ -127,13 +127,6 @@
                     </div>
                     <hr style="color: white;">
                     <center>
-                        <div class="p-t-90">
-                            @if (Route::has('password.request'))
-                            <a class="txt1" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a>
-                            @endif
-                        </div>
                         <div class="p-t-90" >
                             <a class="txt1" style="margin-bottom: 20px;" href="{{ url('/') }}"> Kembali ke beranda</a>
                         </div>

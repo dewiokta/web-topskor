@@ -65,18 +65,15 @@
                                             </form>
                                         </td>
                                         <td>
-                                            <div class="button">
-                                                <ul class="right">
-                                                    <form action="{{ url('pemain') }}/{{ $pemains->id }}" method="post">
-                                                        @csrf
-                                                        {{ method_field('DELETE') }}
-                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data pemain ini?');">Hapus</button>
-                                                    </form>
-                                                </ul>
-                                                <ul class="left">
-                                                    <a class="btn btn-info btn-sm" href="{{ route('pemain.detail', [Auth::user()->id, $pemains->id])}}">Detail</a>
-                                                </ul>
-                                            </div>
+                                            <form action="{{ url('pemain') }}/{{ $pemains->id }}" method="post">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data pemain ini?');">Hapus</button>
+                                            </form>
+                                            <a class="btn btn-info btn-sm" href="{{ route('pemain.detail', [Auth::user()->id, $pemains->id])}}">Detail</a>
+                                            @if($pemains->status == 'Diterima')
+                                            <a class="btn btn-warning btn-sm" href="#">Print Card</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

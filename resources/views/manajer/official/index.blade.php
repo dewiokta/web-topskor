@@ -64,19 +64,16 @@
                                         <td>{{ $officials->ttl }}</td>
                                         <td style="color: #8B0000;">{{ $officials->status }}</td>
                                         <td>
-                                            <div class="button">
-                                                <ul class="right">
-                                                    <form action="{{ url('official') }}/{{ $officials->id }}" method="post">
-                                                        @csrf
-                                                        {{ method_field('DELETE') }}
-                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data official ini?');">Hapus</button>
-                                                    </form>
-                                                </ul>
+                                            <form action="{{ url('official') }}/{{ $officials->id }}" method="post">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data official ini?');">Hapus</button>
+                                            </form>
 
-                                                <ul class="left">
-                                                    <a class="btn btn-info btn-sm" href="{{ route('official.detail', [Auth::user()->id, $officials->id]) }}">Detail</a>
-                                                </ul>
-                                            </div>
+                                            <a class="btn btn-info btn-sm" href="{{ route('official.detail', [Auth::user()->id, $officials->id]) }}">Detail</a>
+                                            @if($officials->status == 'Diterima')
+                                            <a class="btn btn-warning btn-sm" href="#">Print Card</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

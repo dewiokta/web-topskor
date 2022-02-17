@@ -23,7 +23,10 @@ class DashboardController extends Controller
           if (Auth::user()->hasRole('adminpusat')) {
                $zonas = Zona::all();
                $user = User::where('id', Auth::user()->id)->get();
-               return view('admin-zona.index', compact('zonas', 'user'));
+               $klub = Klub::count();
+               $official = Official::count();
+               $pemain = Pemain::count();
+               return view('admin-zona.index', compact('zonas', 'user', 'klub', 'official', 'pemain'));
           } elseif (Auth::user()->hasRole('adminzona')) {
                return view('adminzona_dash');
           } elseif (Auth::user()->hasRole('manajertim')) {
