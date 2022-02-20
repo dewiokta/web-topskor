@@ -35,17 +35,14 @@
 <body>
     <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container" style="margin-top: 15px; margin-bottom: 15px;">
+    <div class="container" style="margin-top: 0px;">
             <a class="navbar-brand" href="/">
                 <img src="{{ url('images/logo.png') }}" height="72" width="253">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" id="menulist">
                     <li class="nav-item">
                         <a href="/">Beranda</a>
                     </li>
@@ -56,6 +53,9 @@
                         <a  href="/informasi">Informasi Umum</a>
                     </li>
                 </ul>
+            </div>
+            <div class="burger" onclick="toggleburger()">
+                <i class='fas fa-bars' style='font-size:24px'></i>
             </div>
         </div>
     </nav>
@@ -87,11 +87,9 @@
                 </div>
             </div>
     </footer>
-    <script src="js/jquery-.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/anim.js"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/popper.js') }}"></script>
+    <!-- <script src="{{ asset('js/style.js') }}"></script> -->
     <script>
         //----HOVER CAPTION---//	  
         jQuery(document).ready(function($) {
@@ -105,5 +103,6 @@
             );
         });
     </script>
+    <script src="{{ asset('js/style.js') }}"></script>
 </body>
 </html>

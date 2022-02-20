@@ -23,7 +23,7 @@
                                             No.
                                         </th>
                                         <th>Usia</th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,21 +33,27 @@
                                         <td class="text-center">{{ $no++ }}</td>
                                         <td>{{ $kelusias->usia }}</td>
                                         <td>
-                                            <form action="{{ url('admin/kelusia/delete') }}/{{ $kelusias->id }}" method="post">
-                                                @csrf
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data usia ini?');">Hapus</button>
-                                            </form>
-                                            <form class="needs-validation form-inline" method="POST" action="{{ url('/admin/kelusia/edit') }}/{{ $kelusias->id }}">
-                                                {{ csrf_field() }}
-                                                <div class="input-group">
-                                                    <input type="text" name="usia" value="{{$kelusias->usia}}" class="form-control" required="" placeholder="">
-                                                    <div class="invalid-feedback">
-                                                        Usia Harus diisi
-                                                    </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <form class="needs-validation form-inline" method="POST" action="{{ url('/admin/kelusia/edit') }}/{{ $kelusias->id }}">
+                                                        {{ csrf_field() }}
+                                                        <div class="input-group">
+                                                            <input type="text" name="usia" value="{{$kelusias->usia}}" class="form-control" required="" placeholder="">
+                                                            <div class="invalid-feedback">
+                                                                Usia Harus diisi
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary"> Edit</button>
+                                                    </form>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary"> Edit</button>
-                                            </form>
+                                                <div class="col">
+                                                    <form action="{{ url('admin/kelusia/delete') }}/{{ $kelusias->id }}" method="post">
+                                                        @csrf
+                                                        {{ method_field('DELETE') }}
+                                                        <button type="submit" class="btn btn-danger " onclick="return confirm('Apakah kamu yakin ingin menghapus data usia ini?');">Hapus</button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach

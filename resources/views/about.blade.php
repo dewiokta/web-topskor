@@ -66,10 +66,10 @@
                 <div class="container">
                     <div class="row intro-text align-items-center justify-content-center">
                         <div>
-                            <h1 style="color: white; font-weight: 600; font-size: 48px; font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;"><strong>LIGA TOPSKOR</strong>
+                            <h1 class="title-carousel" style="color: white; font-weight: 600; font-size: 48px; font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;"><strong>LIGA TOPSKOR</strong>
                             </h1>
                             <br>
-                            <h5>adalah sebuah liga yang dibentuk untuk <br>
+                            <h5 class="capt-carousel">adalah sebuah liga yang dibentuk untuk <br>
                                 mewadahi bakat bakat muda dibidang olahraga <br>
                                 khususnya sepak bola. Liga TopSkor sudah <br>
                                 menjadi kawah candradimuka bagi para <br>

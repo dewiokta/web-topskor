@@ -52,28 +52,32 @@
                                         <td>{{ $pemains->zona }}</td>
                                         <td>{{ $pemains->klub }}</td>
                                         <td style="color: #8B0000;">{{ $pemains->status }}</td>
-                                        <td>
-                                            <form class="needs-validation form-inline" method="POST" action="{{ url('/pemain/kelusia') }}/{{ Auth::user()->id}}/{{ $pemains->id }}">
-                                                {{ csrf_field() }}
-                                                <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="usia" id="cars">
-                                                    <option value="Pilih Usiaa">Pilih Usia</option>
-                                                    @foreach($zonakel as $zonakels)
-                                                    <option value="{{ $zonakels->kelompok_usia->id }}">{{ $zonakels->kelompok_usia->usia }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <button type="submit" class="btn btn-primary"> Tambah</button>
-                                            </form>
+                                        <td class="text-right">
+                                            <div class="d-flex">
+                                                <form class="needs-validation form-inline" method="POST" action="{{ url('/pemain/kelusia') }}/{{ Auth::user()->id}}/{{ $pemains->id }}">
+                                                    {{ csrf_field() }}
+                                                    <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="usia" id="cars">
+                                                        <option value="Pilih Usiaa">Pilih Usia</option>
+                                                        @foreach($zonakel as $zonakels)
+                                                        <option value="{{ $zonakels->kelompok_usia->id }}">{{ $zonakels->kelompok_usia->usia }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <button type="submit" class="btn btn-primary"> Tambah</button>
+                                                </form>
+                                            </div>
                                         </td>
-                                        <td>
-                                            <form action="{{ url('pemain') }}/{{ $pemains->id }}" method="post">
-                                                @csrf
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data pemain ini?');">Hapus</button>
-                                            </form>
-                                            <a class="btn btn-info btn-sm" href="{{ route('pemain.detail', [Auth::user()->id, $pemains->id])}}">Detail</a>
-                                            @if($pemains->status == 'Diterima')
-                                            <a class="btn btn-warning btn-sm" href="#">Print Card</a>
-                                            @endif
+                                        <td class="text-right">
+                                            <div class="d-flex">
+                                                <form action="{{ url('pemain') }}/{{ $pemains->id }}" method="post">
+                                                    @csrf
+                                                    {{ method_field('DELETE') }}
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data pemain ini?');">Hapus</button>
+                                                </form>
+                                                <a class="btn btn-info btn-sm" href="{{ route('pemain.detail', [Auth::user()->id, $pemains->id])}}">Detail</a>
+                                                @if($pemains->status == 'Diterima')
+                                                <a class="btn btn-warning btn-sm" href="#">Print</a>
+                                                @endif
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach

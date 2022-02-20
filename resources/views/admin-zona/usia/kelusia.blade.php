@@ -24,7 +24,7 @@
                                         </th>
                                         <th>Zona</th>
                                         <th>Kelompok Usia</th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,11 +35,6 @@
                                         <td>{{ $zonakels->zona->namaKota }}</td>
                                         <td>{{ $zonakels->kelompok_usia->usia }}</td>
                                         <td>
-                                            <form action="{{ url('admin/zona-kelompok-usia/delete') }}/{{ $zonakels->id }}" method="post">
-                                                @csrf
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?');">Hapus</button>
-                                            </form>
                                             <form class="needs-validation form-inline" method="POST" action="{{ url('/admin/zona-kelompok-usia/edit') }}/{{ $zonakels->id }}">
                                                 {{ csrf_field() }}
                                                 <div class="form-group">
@@ -61,6 +56,11 @@
                                                     </select>
                                                     <button type="submit" class="btn btn-primary"> Edit</button>
                                                 </div>
+                                            </form>
+                                            <form action="{{ url('admin/zona-kelompok-usia/delete') }}/{{ $zonakels->id }}" method="post">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?');">Hapus</button>
                                             </form>
                                         </td>
                                     </tr>
