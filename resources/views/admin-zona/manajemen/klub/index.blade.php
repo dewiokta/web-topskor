@@ -32,7 +32,7 @@
     <div class="section-header">
         <h1>Klub</h1>
     </div>
-    <section class="products mb-5">
+    <!-- <section class="products mb-5">
         <div class="container">
             <div class="filters">
                 <ul>
@@ -43,7 +43,7 @@
                 </ul>
             </div>
         </div>
-    </section>
+    </section> -->
     <div class="section-body">
         <div class="row">
             <div class="col-12">
