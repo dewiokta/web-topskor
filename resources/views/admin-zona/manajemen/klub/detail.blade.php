@@ -80,9 +80,23 @@
                             <td>{{ $klub->keanggotaan_askot_askab }}</td>
                         </tr>
                         <tr>
+                            <td>Surat Rekomendasi </td>
+                            <td>:</td>
+                            <td>
+                                <img src="{{ url('images/surat_rekom') }}/{{ $klub->scan_surat_rekom }}" width="200" alt="...">
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Akte SSB</td>
                             <td>:</td>
                             <td>{{ $klub->akte_sbb }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bukti Akte SSB</td>
+                            <td>:</td>
+                            <td>
+                                <img src="{{ url('images/akte_SSB') }}/{{ $klub->scan_aktessb }}" width="200" alt="...">
+                            </td>
                         </tr>
                         <tr>
                             <td>Prestasi</td>

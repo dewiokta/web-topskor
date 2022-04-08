@@ -56,15 +56,23 @@
                             <td>{{ $officials->ttl }}</td>
                         </tr>
                         <tr>
+                            <td>Email</td>
+                            <td>:</td>
+                            <td>{{ $officials->email }}</td>
+                        </tr>
+                        <tr>
                             <td>Lisensi</td>
                             <td>:</td>
                             <td>{{ $officials->lisensi }}</td>
                         </tr>
                         <tr>
-                            <td>Email</td>
+                            <td>Bukti Lisensi</td>
                             <td>:</td>
-                            <td>{{ $officials->email }}</td>
+                            <td>
+                                <img src="{{ url('images/lisensi') }}/{{ $officials->scan_lisensi }}" width="200" alt="...">
+                            </td>
                         </tr>
+
                     </tbody>
                 </table>
             </div>

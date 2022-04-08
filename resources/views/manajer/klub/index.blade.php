@@ -65,6 +65,25 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Bukti Akte SSB</label>
+                                    <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                        <div class="custom-file">
+                                            <input value="Upload" placeholder="bukti keanggotaan" type="file" name="akte_ssb" class="form-control @error('lisensi') is-invalid @enderror" onchange="readURLAkteSSB(this);">
+                                            @error('foto')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label"></label>
+                                    <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                        <img id="blah_aktessb" src="#" alt="bukti lisensi" />
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <label for="alamat_bersurat" class="col-md-2 col-form-label text-md-right">{{ __('Alamat Bersurat') }}</label>
@@ -185,6 +204,26 @@
                                         @enderror
                                     </div>
                                 </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Surat Rekomendasi</label>
+                                    <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                        <div class="custom-file">
+                                            <input value="Upload" placeholder="rekomendasi" type="file" name="surat_rekom" class="form-control @error('lisensi') is-invalid @enderror" onchange="readURLSuratRekom(this);">
+                                            @error('foto')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label"></label>
+                                    <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                        <img id="blah_suratrekom" src="#" alt="bukti lisensi" />
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <label for="prestasi" class="col-md-2 col-form-label text-md-right">Prestasi</label>
@@ -268,7 +307,7 @@
                             <td>Logo Klub</td>
                             <td>:</td>
                             <td>
-                            <img src="{{ url('images/logo_klub') }}/{{ $klub->logo_klub }}" width="100" alt="...">
+                                <img src="{{ url('images/logo_klub') }}/{{ $klub->logo_klub }}" width="100" alt="...">
                             </td>
                         </tr>
                         <tr>
@@ -317,9 +356,23 @@
                             <td>{{ $klub->keanggotaan_askot_askab }}</td>
                         </tr>
                         <tr>
+                            <td>Surat Rekomendasi</td>
+                            <td>:</td>
+                            <td>
+                                <img src="{{ url('images/surat_rekom') }}/{{ $klub->scan_suratrekom }}" width="100" alt="...">
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Akte SSB</td>
                             <td>:</td>
                             <td>{{ $klub->akte_sbb }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bukti Akte SSB</td>
+                            <td>:</td>
+                            <td>
+                                <img src="{{ url('images/akte_SSB') }}/{{ $klub->scan_aktessb }}" width="100" alt="...">
+                            </td>
                         </tr>
                         <tr>
                             <td>Prestasi</td>

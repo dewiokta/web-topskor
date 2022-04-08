@@ -2,14 +2,14 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h1>Kelompok Usia</h1>
+        <h1>Zona Kelompok Usia</h1>
     </div>
     <div class="section-body">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Kelompok Usia</h4>
+                        <h4>Zona Kelompok Usia</h4>
                         <div class="card-header-action">
                             <a class="btn btn-icon icon-left btn-primary" href="" data-toggle="modal" data-target="#exampleModalLong">Tambah Data</a>
                         </div>
@@ -35,28 +35,6 @@
                                         <td>{{ $zonakels->zona->namaKota }}</td>
                                         <td>{{ $zonakels->kelompok_usia->usia }}</td>
                                         <td>
-                                            <form class="needs-validation form-inline" method="POST" action="{{ url('/admin/zona-kelompok-usia/edit') }}/{{ $zonakels->id }}">
-                                                {{ csrf_field() }}
-                                                <div class="form-group">
-                                                    <label class="col-form-label">Zona</label>
-                                                    <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="zona" id="cars">
-
-                                                        <option value="Pilih Zona">Pilih Zona</option>
-                                                        @foreach($zona as $zonas)
-                                                        <option value="{{ $zonas->id }}">{{ $zonas->namaKota }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <label class="col-form-label">Kelompok Usia</label>
-                                                    <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="usia" id="cars">
-
-                                                        <option value="Pilih Usia">Pilih Usia</option>
-                                                        @foreach($kelusia as $kelusias)
-                                                        <option value="{{ $kelusias->id }}">{{ $kelusias->usia }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <button type="submit" class="btn btn-primary"> Edit</button>
-                                                </div>
-                                            </form>
                                             <form action="{{ url('admin/zona-kelompok-usia/delete') }}/{{ $zonakels->id }}" method="post">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
@@ -116,4 +94,5 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

@@ -69,6 +69,7 @@
                 </div>
             </div>
         </div>
+        @if($officials->status == 'Dalam Proses' || $officials->status == 'Ditolak')
         <div class="col-md-12 mt-2">
             <div class="card">
                 <div class="card-body">
@@ -210,6 +211,7 @@
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
     </div>
 </div>

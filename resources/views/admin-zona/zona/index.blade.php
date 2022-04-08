@@ -35,18 +35,6 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <form class="needs-validation form-inline" method="POST" action="{{ url('/admin/zona/edit') }}/{{ $zona->id }}">
-                                                        {{ csrf_field() }}
-                                                        <div class="input-group">
-                                                            <input type="text" name="namaKota" value="{{$zona->namaKota}}" class="form-control" required="" placeholder="">
-                                                            <div class="invalid-feedback">
-                                                                Lokasi Usia Harus diisi
-                                                            </div>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary"> Edit</button>
-                                                    </form>
-                                                </div>
-                                                <div class="col">
                                                     <form action="{{ url('admin/zona/delete') }}/{{ $zona->id }}" method="post">
                                                         @csrf
                                                         {{ method_field('DELETE') }}

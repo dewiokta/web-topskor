@@ -64,7 +64,7 @@
                                         <th>Nama Manajer</th>
                                         <th>Logo Klub</th>
                                         <th>Jumlah Pelatih</th>
-                                        <th>Jumlah Siswa</th>
+                                        <th>Jumlah Pemain</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -80,11 +80,13 @@
                                             <img src="{{ url('images/logo_klub') }}/{{ $klubs->logo_klub }}" width="100" alt="...">
                                         </td>
                                         <td>{{ $klubs->jumlah_pelatih }} pelatih</td>
-                                        <td>{{ $klubs->jumlah_siswa }} siswa</td>
+                                        <td>{{ $klubs->jumlah_siswa }} pemain</td>
                                         <td>
+                                        <div class="d-flex">
                                             <a class="btn btn-info btn-sm" href="{{ route('adminklub.detail', $klubs->id) }}">Detail</a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('klubs.official', $klubs->id) }}">Data Official</a>
-                                            <a class="btn btn-danger btn-sm" href="{{ route('klubs.pemain', $klubs->id) }}">Data Pemain</a>
+                                            <a class="btn btn-warning btn-sm" href="{{ route('klubs.official', $klubs->id) }}">Official</a>
+                                            <a class="btn btn-danger btn-sm" href="{{ route('klubs.pemain', $klubs->id) }}">Pemain</a>
+                                        </div>
                                         </td>
                                     </tr>
                                     @endforeach

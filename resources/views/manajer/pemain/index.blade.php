@@ -53,6 +53,7 @@
                                         <td>{{ $pemains->klub }}</td>
                                         <td style="color: #8B0000;">{{ $pemains->status }}</td>
                                         <td class="text-right">
+                                            @if($pemains->status == 'Dalam Proses' || $pemains->status == 'Ditolak')
                                             <div class="d-flex">
                                                 <form class="needs-validation form-inline" method="POST" action="{{ url('/pemain/kelusia') }}/{{ Auth::user()->id}}/{{ $pemains->id }}">
                                                     {{ csrf_field() }}
@@ -65,17 +66,20 @@
                                                     <button type="submit" class="btn btn-primary"> Tambah</button>
                                                 </form>
                                             </div>
+                                            @endif
                                         </td>
                                         <td class="text-right">
                                             <div class="d-flex">
+                                                @if($pemains->status == 'Dalam Proses' || $pemains->status == 'Ditolak')
                                                 <form action="{{ url('pemain') }}/{{ $pemains->id }}" method="post">
                                                     @csrf
                                                     {{ method_field('DELETE') }}
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data pemain ini?');">Hapus</button>
                                                 </form>
+                                                @endif
                                                 <a class="btn btn-info btn-sm" href="{{ route('pemain.detail', [Auth::user()->id, $pemains->id])}}">Detail</a>
                                                 @if($pemains->status == 'Diterima')
-                                                <a class="btn btn-warning btn-sm" href="#">Print</a>
+                                                <a class="btn btn-warning btn-sm" href="{{route('print-id', $pemains->id)}}">Print</a>
                                                 @endif
                                             </div>
                                         </td>
@@ -173,7 +177,7 @@
                                 <label class="col-sm-2 col-form-label">Klub</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
                                     <select style="width: 100%;  padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;  resize: vertical; color: gray;" name="klub" id="cars" disabled>
-                                        <option value="zona">{{ $klubs->namaKlub }}</option>
+                                        <option value="{{ $klubs->namaKlub }}">{{ $klubs->namaKlub }}</option>
                                     </select>
                                 </div>
                                 @endforeach
@@ -197,6 +201,106 @@
                                     <img id="blah" src="#" alt="foto pemainmu" />
                                 </div>
                             </div>
+
+                            <!-- scan nisn -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">NISN Pemain</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <div class="custom-file">
+                                        <input value="Upload" placeholder="Foto pemain" type="file" name="nisn" class="form-control @error('nisn') is-invalid @enderror" onchange="readURLNisn(this);">
+                                        @error('foto')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"></label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <img id="blah_nisn" src="#" alt="nisn" />
+                                </div>
+                            </div>
+
+                            <!-- scan ijazah -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Ijazah Pemain</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <div class="custom-file">
+                                        <input value="Upload" placeholder="Foto pemain" type="file" name="ijazah" class="form-control @error('ijazah') is-invalid @enderror" onchange="readURLIjazah(this);">
+                                        @error('foto')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"></label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <img id="blah_ijazah" src="#" alt="ijazah" />
+                                </div>
+                            </div>
+
+                            <!-- scan kk -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Kartu Keluarga </label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <div class="custom-file">
+                                        <input value="Upload" placeholder="Foto pemain" type="file" name="kk" class="form-control @error('kk') is-invalid @enderror" onchange="readURLKK(this);">
+                                        @error('foto')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"></label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <img id="blah_kk" src="#" alt="kartu keluarga" />
+                                </div>
+                            </div>
+
+                            <!-- scan akte -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Akte Kelahiran</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <div class="custom-file">
+                                        <input value="Upload" placeholder="Foto pemain" type="file" name="akte" class="form-control @error('akte') is-invalid @enderror" onchange="readURLAkte(this);">
+                                        @error('foto')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"></label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <img id="blah_akte" src="#" alt="akte kelahiran" />
+                                </div>
+                            </div>
+
+                            <!-- scan raport -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Raport</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <div class="custom-file">
+                                        <input value="Upload" placeholder="Foto pemain" type="file" name="raport" class="form-control @error('foto') is-invalid @enderror" onchange="readURL(this);">
+                                        @error('foto')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-success" id="SubmitCreateArticleForm">Kirim</button>
@@ -208,4 +312,11 @@
         </div>
     </div>
 </div>
+<script>
+    var msg = "{{Session::get('alert')}}";
+    var exist = "{{Session::has('alert')}}";
+    if (exist) {
+        alert(msg);
+    }
+</script>
 @endsection

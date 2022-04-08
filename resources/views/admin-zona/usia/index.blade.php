@@ -35,18 +35,6 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <form class="needs-validation form-inline" method="POST" action="{{ url('/admin/kelusia/edit') }}/{{ $kelusias->id }}">
-                                                        {{ csrf_field() }}
-                                                        <div class="input-group">
-                                                            <input type="text" name="usia" value="{{$kelusias->usia}}" class="form-control" required="" placeholder="">
-                                                            <div class="invalid-feedback">
-                                                                Usia Harus diisi
-                                                            </div>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary"> Edit</button>
-                                                    </form>
-                                                </div>
-                                                <div class="col">
                                                     <form action="{{ url('admin/kelusia/delete') }}/{{ $kelusias->id }}" method="post">
                                                         @csrf
                                                         {{ method_field('DELETE') }}

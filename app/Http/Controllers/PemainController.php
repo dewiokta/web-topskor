@@ -29,6 +29,29 @@ class PemainController extends Controller
             ->select('zonas.namaKota', 'users.*')->where('users.id', '=', Auth::user()->id)
             ->first();
         $user = User::where('id', Auth::user()->id)->first();
+        // $messages = ['nisn.required'=>'nisn is already exist'];
+        $validator = \Validator::make($request->all(), [
+            'zona' => '',
+            'klub' => '',
+            'namaPemain' => 'required',
+            'no_punggung' => 'required',
+            'posisi' => 'required',
+            'sekolah' => 'required',
+            'nisn' => 'required|unique:pemains',
+            'ttl' => 'required',
+            'foto' => 'required'
+        ],[
+            'nisn.required'=>'nisn is already exist'
+        ]);
+        if ($validator->fails()) {
+            $response = [
+                'success' => false,
+                'message' => $validator->messages()
+            ];
+            return redirect()->back()->with('alert','NISN is already exist !');
+            // return response()->json($response,404);
+        }
+
         $pemain = new Pemain;
         $pemain->zona_id = $users->zona_id;
         $pemain->klub_id = $klub->id;
@@ -42,13 +65,41 @@ class PemainController extends Controller
         $pemain->nisn = $request->nisn;
         $pemain->sekolah = $request->sekolah;
         $file = $request->file('foto');
+        $file_nisn = $request->file('nisn');
+        $file_ijazah = $request->file('ijazah');
+        $file_kk = $request->file('kk');
+        $file_akte = $request->file('akte');
+        $file_raport = $request->file('raport');
         // Mendapatkan Nama File
         $nama_file = $file->getClientOriginalName();
+        $nama_file_nisn = $file_nisn->getClientOriginalName();
+        $nama_file_ijazah = $file_ijazah->getClientOriginalName();
+        $nama_file_kk = $file_kk->getClientOriginalName();
+        $nama_file_akte = $file_akte->getClientOriginalName();
+        $nama_file_raport = $file_raport->getClientOriginalName();
 
         // Proses Upload File
         $destinationPath = 'images\pemain';
+        $destinationPathNisn = 'images\nisn';
+        $destinationPathKK = 'images\kartu_keluarga';
+        $destinationPathAkte = 'images\akte';
+        $destinationPathIjazah = 'images\ijazah';
+        $destinationPathRaport = 'images\raport';
+
         $file->move($destinationPath, $file->getClientOriginalName());
+        $file_nisn->move($destinationPathNisn, $file_nisn->getClientOriginalName());
+        $file_ijazah->move($destinationPathIjazah, $file_ijazah->getClientOriginalName());
+        $file_kk->move($destinationPathKK, $file_kk->getClientOriginalName());
+        $file_akte->move($destinationPathAkte, $file_akte->getClientOriginalName());
+        $file_raport->move($destinationPathRaport, $file_raport->getClientOriginalName());
+
         $pemain->foto = $nama_file;
+        $pemain->scan_nisn = $nama_file_nisn;
+        $pemain->scan_ijazah = $nama_file_ijazah;
+        $pemain->scan_kk = $nama_file_kk;
+        $pemain->scan_akte = $nama_file_akte;
+        $pemain->scan_rapot = $nama_file_raport;
+        
         $pemain->save();
 
         return redirect('pemain/' . Auth::user()->id);

@@ -14,17 +14,7 @@
     <div class="section-header">
         <h1>Data Official Tim</b></h1>
     </div>
-    <div class="input-group mb-3">
-        <form action="#" method="GET">
-            {{ csrf_field() }}
-            <input type="text" name="name" placeholder="Searching...." class="form-control bg-white">
-        </form>
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">
-                <i class="fas fa-search"></i>
-            </span>
-        </div>
-    </div>
+    
     <div class="section-body">
         <div class="row">
             <div class="col-12">
@@ -66,13 +56,12 @@
                                         <td class="text-right">
                                             <div class="d-flex">
                                                 <a class="btn btn-info btn-sm" href="{{ route('official.detail', [Auth::user()->id, $officials->id]) }}">Detail</a>
+                                                @if($officials->status == 'Dalam Proses' || $officials->status == 'Ditolak')
                                                 <form action="{{ url('official') }}/{{ $officials->id }}" method="post">
                                                     @csrf
                                                     {{ method_field('DELETE') }}
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data official ini?');">Hapus</button>
                                                 </form>
-                                                @if($officials->status == 'Diterima')
-                                                <a class="btn btn-warning btn-sm" href="#" >Print</a>
                                                 @endif
                                             </div>
 
@@ -141,6 +130,25 @@
                                 <div class="form-check form-check-inline ">
                                     <input name="lisensi[]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Non-Lisensi">
                                     <label class="form-check-label" for="inlineCheckbox3">Non-Lisensi</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Bukti Lisensi</label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <div class="custom-file">
+                                        <input value="Upload" placeholder="Masukkan lisensi" type="file" name="img_lisensi" class="form-control @error('lisensi') is-invalid @enderror" onchange="readURLLisensi(this);">
+                                        @error('foto')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"></label>
+                                <div class="input-group mb-2 mr-sm-2 col-sm-8">
+                                    <img id="blah_lisensi" src="#" alt="bukti lisensi" />
                                 </div>
                             </div>
                             <div class="form-group row">

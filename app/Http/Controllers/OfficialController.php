@@ -53,8 +53,20 @@ class OfficialController extends Controller
         $official->ttl = $request->ttl;
         $official->email = $request->email;
         $official->no_hp = $request->no_hp;
-        $official->lisensi = implode(", ", $request->lisensi);
         $official->medsos_url = $request->medsos_url;
+        $official->lisensi = implode(", ", $request->lisensi);
+        $file = $request->file('img_lisensi');
+
+        
+        // Mendapatkan Nama File
+        $nama_file = $file->getClientOriginalName();
+
+        // Proses Upload File
+        $destinationPath = 'images\lisensi';
+
+        $file->move($destinationPath, $file->getClientOriginalName());
+        $official->scan_lisensi = $nama_file;
+        
         $official->save();
 
         return redirect('official/' . Auth::user()->id);

@@ -71,9 +71,48 @@
                                 <td>Foto</td>
                                 <td>:</td>
                                 <td>
-                                    <img src="{{ url('images/pemain') }}/{{ $pemains->foto }}" width="100" alt="...">
+                                    <img src="{{ url('images/pemain') }}/{{ $pemains->foto }}" width="200" alt="...">
                                 </td>
                             </tr>
+                            <tr>
+                                <td>Akte Kelahiran</td>
+                                <td>:</td>
+                                <td>
+                                    <img src="{{ url('images/akte') }}/{{ $pemains->scan_akte }}" width="200" alt="...">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Kartu Keluarga</td>
+                                <td>:</td>
+                                <td>
+                                    <img src="{{ url('images/kartu_keluarga') }}/{{ $pemains->scan_kk }}" width="200" alt="...">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>NISN</td>
+                                <td>:</td>
+                                <td>
+                                    <img src="{{ url('images/nisn') }}/{{ $pemains->scan_nisn }}" width="200" alt="...">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ijazah</td>
+                                <td>:</td>
+                                <td>
+                                    <img src="{{ url('images/ijazah') }}/{{ $pemains->scan_ijazah }}" width="200" alt="...">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Raport</td>
+                                <td>:</td>
+                                <td>
+                                    <iframe type="application/pdf" src="{{ url('images/raport') }}/{{ $pemains->scan_rapot }}" frameborder="0" 
+                                    style="width: 500px;" height="300">
+
+                                    </iframe>
+                                </td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>

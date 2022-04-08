@@ -64,7 +64,7 @@
                             di Indonesia untuk meningkatkan kemampuan mereka dalam mengolah si kulit bundar. <br>
                         </h5><br>
                         <a href="{{ route('login') }}">
-                            <button class="login100-form-btn">Daftar</button>
+                            <button class="login100-form-btn">Masuk</button>
                         </a>
                     </div>
                 </div>

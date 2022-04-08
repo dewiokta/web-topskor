@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pemain extends Model
 {
+    protected $table = 'pemains';
     public function klub()
     {
         return $this->belongsTo(Klub::class, 'klub_id', 'id');

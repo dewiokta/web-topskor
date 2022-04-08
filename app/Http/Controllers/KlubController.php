@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Auth;
 use App\Models\Klub;
 use App\Models\Official;
@@ -34,7 +35,7 @@ class KlubController extends Controller
         $klub->user_id = $user->id;
         $klub->namaKlub = $request->namaKlub;
         $klub->partisipasi_diligatopskor = $request->partisipasi_diligatopskor;
-        $klub->akte_sbb = $request->akte_sbb; 
+        $klub->akte_sbb = $request->akte_sbb;
         $klub->alamat_bersurat = $request->alamat_bersurat;
         $klub->alamat_latihan = $request->alamat_latihan;
         $klub->medsos_url = $request->medsos_url;
@@ -47,16 +48,28 @@ class KlubController extends Controller
         $klub->prestasi = $request->prestasi;
         $klub->kompetisi_yangdiikuti = $request->kompetisi_yangdiikuti;
         $file = $request->file('logo_klub');
+        $filessb = $request->file('akte_ssb');
+        $filesuratrekom = $request->file('surat_rekom');
         // Mendapatkan Nama File
         $nama_file = $file->getClientOriginalName();
+        $nama_file_ssb = $filessb->getClientOriginalName();
+        $nama_file_rekom = $filesuratrekom->getClientOriginalName();
 
         // Proses Upload File
         $destinationPath = 'images\logo_klub';
+        $destinationPathSsb = 'images\akte_SSB';
+        $destinationPathRekom = 'images\surat_rekom';
+
         $file->move($destinationPath, $file->getClientOriginalName());
+        $filessb->move($destinationPathSsb, $filessb->getClientOriginalName());
+        $filesuratrekom->move($destinationPathRekom, $filesuratrekom->getClientOriginalName());
+
         $klub->logo_klub = $nama_file;
+        $klub->scan_aktessb = $nama_file_ssb;
+        $klub->scan_suratrekom = $nama_file_rekom;
+
         $klub->save();
-        return redirect('klub/'. Auth::user()->id);
-        
+        return redirect('klub/' . Auth::user()->id);
     }
 
     public function __construct()
@@ -64,13 +77,15 @@ class KlubController extends Controller
         $this->middleware('auth');
     }
 
-    public function adminklub(){
+    public function adminklub()
+    {
         $klub =  Klub::all();
         $zonas = Zona::all();
         return view('admin-zona.manajemen.klub.index', compact('klub', 'zonas'));
     }
 
-    public function detailadminklub($id){
+    public function detailadminklub($id)
+    {
         $klubs =  Klub::where('id', $id)->get();
         return view('admin-zona.manajemen.klub.detail', compact('klubs'));
     }
@@ -80,7 +95,6 @@ class KlubController extends Controller
         $klub = DB::table('klubs')->where('zona_id', $zona)->get();
         $zonas = Zona::all();
         return view('admin-zona.manajemen.klub.index', compact('klub', 'zonas'));
-       
     }
 
     public function official($id)
@@ -88,7 +102,6 @@ class KlubController extends Controller
         $official = DB::table('officials')->where('klub_id', $id)->get();
         $zonas = Zona::all();
         return view('admin-zona.manajemen.official.index', compact('official', 'zonas'));
-       
     }
 
     public function pemain($id)
@@ -97,11 +110,10 @@ class KlubController extends Controller
         $pemainn = DB::table('pemains')->where('klub_id', $id)->first();
         $zonas = Zona::all();
         $kelompok_usia =  DB::table('pemain_has_kelompok_usias')
-        ->join('kelompok_usias', 'pemain_has_kelompok_usias.kelusia_id', '=', 'kelompok_usias.id')
-        ->select('kelompok_usias.usia')->where('pemain_has_kelompok_usias.pemain_id', '=', $id)
-        ->get();
+            ->join('kelompok_usias', 'pemain_has_kelompok_usias.kelusia_id', '=', 'kelompok_usias.id')
+            ->select('kelompok_usias.usia')->where('pemain_has_kelompok_usias.pemain_id', '=', $id)
+            ->get();
         return view('admin-zona.manajemen.pemain.index', compact('pemain', 'zonas', 'kelompok_usia'));
-       
     }
 
     public function officialdetail($id)
@@ -114,9 +126,9 @@ class KlubController extends Controller
     {
         $pemain = Pemain::where('id', $id)->get();
         $kelompok_usia =  DB::table('pemain_has_kelompok_usias')
-        ->join('kelompok_usias', 'pemain_has_kelompok_usias.kelusia_id', '=', 'kelompok_usias.id')
-        ->select('kelompok_usias.usia')->where('pemain_has_kelompok_usias.pemain_id', '=', $id)
-        ->get();
+            ->join('kelompok_usias', 'pemain_has_kelompok_usias.kelusia_id', '=', 'kelompok_usias.id')
+            ->select('kelompok_usias.usia')->where('pemain_has_kelompok_usias.pemain_id', '=', $id)
+            ->get();
         return view('admin-zona.manajemen.pemain.detail', compact('pemain', 'kelompok_usia'));
     }
 
