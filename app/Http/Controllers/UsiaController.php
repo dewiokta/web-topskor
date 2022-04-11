@@ -41,7 +41,7 @@ class UsiaController extends Controller
     {
         $kelusia = new Kelompok_usia();
         $kelusia->usia = $request->usia;
-        $kelusia->
+        // $kelusia->
         $kelusia->save();
         return redirect('/admin/kelompok-usia');
     }

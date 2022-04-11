@@ -65,7 +65,7 @@ class PemainController extends Controller
         $pemain->nisn = $request->nisn;
         $pemain->sekolah = $request->sekolah;
         $file = $request->file('foto');
-        $file_nisn = $request->file('nisn');
+        $file_nisn = $request->file('scan_nisn');
         $file_ijazah = $request->file('ijazah');
         $file_kk = $request->file('kk');
         $file_akte = $request->file('akte');

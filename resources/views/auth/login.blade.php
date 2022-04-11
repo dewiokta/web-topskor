@@ -93,7 +93,7 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter username">
-                        <input class="input100" type="text" name="email" placeholder="Username">
+                        <input class="input100" type="text" name="email" placeholder="Email">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

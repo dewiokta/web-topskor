@@ -207,7 +207,7 @@
                                 <label class="col-sm-2 col-form-label">NISN Pemain</label>
                                 <div class="input-group mb-2 mr-sm-2 col-sm-8">
                                     <div class="custom-file">
-                                        <input value="Upload" placeholder="Foto pemain" type="file" name="nisn" class="form-control @error('nisn') is-invalid @enderror" onchange="readURLNisn(this);">
+                                        <input value="Upload" placeholder="Foto pemain" type="file" name="scan_nisn" class="form-control @error('nisn') is-invalid @enderror" onchange="readURLNisn(this);">
                                         @error('foto')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
